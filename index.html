@@ -167,6 +167,20 @@
   .share span::before { content: "›"; color: var(--accent); font-weight: 700; }
   @media (max-width: 799px) { .flows { grid-template-columns: 1fr; } }
 
+  /* app screenshots in a Mac window */
+  .shots { padding: 18px; display: grid; gap: 16px; margin-top: 24px; }
+  .shots [role="tablist"] { display: flex; flex-wrap: wrap; gap: 4px; }
+  .shots [role="tab"] { border: 0; background: transparent; color: var(--muted); padding: 0 14px; min-height: 40px; border-radius: 999px; font: 500 13px/1 var(--cond); letter-spacing: .08em; text-transform: uppercase; cursor: pointer; transition: color var(--t), background var(--t); }
+  .shots [role="tab"]:hover { color: var(--ink); }
+  .shots [role="tab"][aria-selected="true"] { background: var(--ink); color: var(--bg-a); }
+  .mac-window { border-radius: 12px; overflow: hidden; background: #1c1c21; box-shadow: 0 30px 80px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.08); }
+  .mac-bar { display: flex; align-items: center; gap: 8px; height: 38px; padding: 0 14px; background: linear-gradient(#2b2b31, #232328); border-bottom: 1px solid rgba(0,0,0,.5); position: relative; }
+  .mac-bar span { width: 12px; height: 12px; border-radius: 50%; background: #ff5f57; box-shadow: inset 0 0 0 .5px rgba(0,0,0,.2); }
+  .mac-bar span:nth-child(2) { background: #febc2e; } .mac-bar span:nth-child(3) { background: #28c840; }
+  .mac-bar em { position: absolute; left: 0; right: 0; text-align: center; font: 600 13px/38px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #b9b5ac; pointer-events: none; }
+  .mac-window img { width: 100%; height: auto; display: block; animation: fadein .35s ease; }
+  @keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
+  nav .lang { border: 1px solid var(--glass-border); background: rgba(255,255,255,.06); color: var(--ink); min-height: 40px; padding: 0 12px; border-radius: 999px; font: 600 12px/1 var(--cond); letter-spacing: .12em; cursor: pointer; }
   .how { display: grid; gap: 14px; grid-template-columns: 1fr 1fr; }
   .how article { padding: 24px; }
   .how h3 { font-size: 22px; margin-bottom: 8px; }
@@ -206,16 +220,18 @@
 
 <header class="masthead">
   <div class="wrap">
-    <a class="wordmark" href="#" data-t="1"><img src="icon.png" alt="" width="34" height="34">Prelo</a>
+    <a class="wordmark" href="#"><img src="icon.png" alt="" width="34" height="34">Prelo</a>
     <nav aria-label="Seções">
       <span class="pill" aria-hidden="true"></span>
-      <a href="#pecas" data-t="2">Peças</a>
-      <a href="#experimente" data-t="3">Experimente</a>
-      <a href="#origens" data-t="4">De onde</a>
+      <a href="#pecas">Peças</a>
+      <a href="#experimente">Experimente</a>
+      <a href="#origens">De onde</a>
+      <a href="#app">O app</a>
       <a href="#como">Como roda</a>
-      <a href="#instalar" data-t="5">Instalar</a>
-      <a href="#versoes" data-t="6">Versões</a>
-      <a class="cta btn primary" id="dl-top" href="https://github.com/PreloPrinter/preloprinter.github.io/releases/latest" data-t="7">Baixar</a>
+      <a href="#instalar">Instalar</a>
+      <a href="#versoes">Versões</a>
+      <button type="button" class="lang" id="lang" aria-label="English">EN</button>
+      <a class="cta btn primary" id="dl-top" href="https://github.com/PreloPrinter/preloprinter.github.io/releases/latest">Baixar</a>
     </nav>
   </div>
 </header>
@@ -223,11 +239,11 @@
 <main class="wrap">
   <section class="hero">
     <div>
-      <p class="eyebrow" data-t="8">A impressora térmica da casa</p>
-      <h1 data-t="9">O que importa, <em>impresso.</em></h1>
-      <p class="lead" data-t="10">Uma impressora de cupom vira a gráfica de casa: um jornalzinho todo dia, recados na bancada, a lista do mercado, etiquetas para os potes. Do Mac, do iPhone e do Claude.</p>
+      <p class="eyebrow">A impressora térmica da casa</p>
+      <h1>O que importa, <em>impresso.</em></h1>
+      <p class="lead">Uma impressora de cupom vira a gráfica de casa: um jornalzinho todo dia, recados na bancada, a lista do mercado, etiquetas para os potes. Do Mac, do iPhone e do Claude.</p>
       <div class="ctas">
-        <a class="btn primary" id="dl" href="https://github.com/PreloPrinter/preloprinter.github.io/releases/latest" data-t="11">
+        <a class="btn primary" id="dl" href="https://github.com/PreloPrinter/preloprinter.github.io/releases/latest">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
           Baixar para Mac <small>Apple Silicon</small>
         </a>
@@ -240,32 +256,32 @@
   </section>
 
   <section id="pecas">
-    <p class="eyebrow" data-t="12">O que ele imprime</p>
-    <h2 data-t="13">Uma redação inteira em 80 mm de papel.</h2>
+    <p class="eyebrow">O que ele imprime</p>
+    <h2>Uma redação inteira em 80 mm de papel.</h2>
     <div class="features">
       <article class="feature glass">
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-4 0v-9h4"/><path d="M12 6h6M12 10h6M12 14h6M12 18h6"/></svg></div>
-        <h3 data-t="14">Jornal do dia</h3><p data-t="15">Clima da sua cidade, tarefas e agenda do Home Assistant, notícias dos feeds que você escolher, mercado e almanaque. Sai sozinho na hora marcada.</p>
+        <h3>Jornal do dia</h3><p>Clima da sua cidade, tarefas e agenda do Home Assistant, notícias dos feeds que você escolher, mercado e almanaque. Sai sozinho na hora marcada.</p>
       </article>
       <article class="feature glass">
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-        <h3 data-t="16">Recados, listas, caderno</h3><p data-t="17">Um bilhete para quem chega, a lista do mercado com caixinhas, páginas pautadas ou quadriculadas do tamanho que precisar.</p>
+        <h3>Recados, listas, caderno</h3><p>Um bilhete para quem chega, a lista do mercado com caixinhas, páginas pautadas ou quadriculadas do tamanho que precisar.</p>
       </article>
       <article class="feature glass">
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2H2v10l9.3 9.3a1 1 0 0 0 1.4 0l8.6-8.6a1 1 0 0 0 0-1.4z"/><circle cx="7" cy="7" r="1.5"/></svg></div>
-        <h3 data-t="18">Etiquetas, QR e Wi-Fi</h3><p data-t="19">Texto grande com a data para o pote do congelador, QR code com legenda, o Wi-Fi de visitas pronto para escanear.</p>
+        <h3>Etiquetas, QR e Wi-Fi</h3><p>Texto grande com a data para o pote do congelador, QR code com legenda, o Wi-Fi de visitas pronto para escanear.</p>
       </article>
       <article class="feature glass">
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
-        <h3 data-t="20">Fotos</h3><p data-t="21">Fotos saem pontilhadas (Floyd–Steinberg), com margens cortadas e clareadas para não borrar o papel. Pela tela, pelo iPhone, pelo Claude.</p>
+        <h3>Fotos</h3><p>Fotos saem pontilhadas (Floyd–Steinberg), com margens cortadas e clareadas para não borrar o papel. Pela tela, pelo iPhone, pelo Claude.</p>
       </article>
       <article class="feature glass">
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></div>
-        <h3 data-t="22">Editor livre</h3><p data-t="23">Monte a peça do seu jeito: texto, imagens, QR, formas, modelos salvos. Prévia térmica de verdade antes de imprimir.</p>
+        <h3>Editor livre</h3><p>Monte a peça do seu jeito: texto, imagens, QR, formas, modelos salvos. Prévia térmica de verdade antes de imprimir.</p>
       </article>
       <article class="feature glass">
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-        <h3 data-t="24">Fila e histórico</h3><p data-t="25">A redação mostra o que está saindo, o que espera e o que já saiu — venha do app, do iPhone, do Claude ou da agenda.</p>
+        <h3>Fila e histórico</h3><p>A redação mostra o que está saindo, o que espera e o que já saiu — venha do app, do iPhone, do Claude ou da agenda.</p>
       </article>
     </div>
 
@@ -279,138 +295,160 @@
   </section>
 
   <section id="experimente">
-    <p class="eyebrow" data-t="26">Experimente</p>
-    <h2 data-t="27">Escreva e veja como sai.</h2>
-    <p class="muted" data-t="28">A prévia aqui é uma imitação em HTML da diagramação do Prelo — no app, ela é a imagem exata que vai para a impressora.</p>
+    <p class="eyebrow">Experimente</p>
+    <h2>Escreva e veja como sai.</h2>
+    <p class="muted">A prévia aqui é uma imitação em HTML da diagramação do Prelo — no app, ela é a imagem exata que vai para a impressora.</p>
     <div class="demo glass">
       <form id="demo" onsubmit="return false">
         <div class="seg" role="group" aria-label="Tipo de peça">
-          <button type="button" data-kind="note" aria-pressed="true" data-t="29">Recado</button>
-          <button type="button" data-kind="list" aria-pressed="false" data-t="30">Lista</button>
-          <button type="button" data-kind="label" aria-pressed="false" data-t="31">Etiqueta</button>
-          <button type="button" data-kind="notebook" aria-pressed="false" data-t="32">Caderno</button>
-          <button type="button" data-kind="photo" aria-pressed="false" data-t="33">Foto</button>
+          <button type="button" data-kind="note" aria-pressed="true">Recado</button>
+          <button type="button" data-kind="list" aria-pressed="false">Lista</button>
+          <button type="button" data-kind="label" aria-pressed="false">Etiqueta</button>
+          <button type="button" data-kind="notebook" aria-pressed="false">Caderno</button>
+          <button type="button" data-kind="photo" aria-pressed="false">Foto</button>
         </div>
         <div data-for="note">
-          <label data-t="34">Para <input id="d-to" value="Chris" maxlength="40"></label>
-          <label data-t="35">Recado <textarea id="d-text" maxlength="400">Comprei pão, está na bancada. Volto às 18h.</textarea></label>
-          <label data-t="36">De <input id="d-from" value="Bruno" maxlength="40"></label>
+          <label>Para <input id="d-to" value="Chris" maxlength="40"></label>
+          <label>Recado <textarea id="d-text" maxlength="400">Comprei pão, está na bancada. Volto às 18h.</textarea></label>
+          <label>De <input id="d-from" value="Bruno" maxlength="40"></label>
         </div>
         <div data-for="list" hidden>
-          <label data-t="37">Título <input id="d-title" value="Mercado" maxlength="40"></label>
-          <label data-t="38">Itens <span class="hint">um por linha</span><textarea id="d-items" maxlength="600">Café
+          <label>Título <input id="d-title" value="Mercado" maxlength="40"></label>
+          <label>Itens <span class="hint">um por linha</span><textarea id="d-items" maxlength="600">Café
 Ovos
 Leite
 Pão integral
 Banana</textarea></label>
         </div>
         <div data-for="label" hidden>
-          <label data-t="39">Texto grande <input id="d-big" value="Feijão" maxlength="24"></label>
-          <label data-t="40">Detalhe <input id="d-detail" value="Congelado hoje" maxlength="60"></label>
+          <label>Texto grande <input id="d-big" value="Feijão" maxlength="24"></label>
+          <label>Detalhe <input id="d-detail" value="Congelado hoje" maxlength="60"></label>
         </div>
         <div data-for="notebook" hidden>
-          <label data-t="41">Título <input id="d-ntitle" value="Ideias" maxlength="40"></label>
-          <label data-t="42">Estilo
+          <label>Título <input id="d-ntitle" value="Ideias" maxlength="40"></label>
+          <label>Estilo
             <select id="d-style"><option value="lined">Pautado</option><option value="grid">Quadriculado</option><option value="dotted" selected>Pontilhado</option></select>
           </label>
-          <label data-t="43"><span>Linhas: <output id="d-lines-out">8</output></span><input id="d-lines" type="range" min="4" max="24" value="8"></label>
-          <label data-t="44">Espaço entre linhas
+          <label><span>Linhas: <output id="d-lines-out">8</output></span><input id="d-lines" type="range" min="4" max="24" value="8"></label>
+          <label>Espaço entre linhas
             <select id="d-spacing"><option value="6">Estreito (6 mm)</option><option value="7" selected>Médio (7 mm)</option><option value="9">Largo (9 mm)</option></select>
           </label>
-          <label class="row" data-t="45"><input id="d-date" type="checkbox" checked> Data no topo</label>
+          <label class="row"><input id="d-date" type="checkbox" checked> Data no topo</label>
         </div>
         <div data-for="photo" hidden>
-          <label data-t="46">Foto <input id="d-photo" type="file" accept="image/*"></label>
-          <p class="hint" data-t="47">A foto fica só no seu navegador: o pontilhado (Floyd–Steinberg) roda aqui mesmo, como no Prelo.</p>
+          <label>Foto <input id="d-photo" type="file" accept="image/*"></label>
+          <p class="hint">A foto fica só no seu navegador: o pontilhado (Floyd–Steinberg) roda aqui mesmo, como no Prelo.</p>
         </div>
-        <p class="hint" data-t="48">No Prelo, o botão Imprimir fica logo abaixo da prévia. Aqui, só a prévia.</p>
+        <p class="hint">No Prelo, o botão Imprimir fica logo abaixo da prévia. Aqui, só a prévia.</p>
       </form>
       <div class="strip paper-live" id="paper" aria-live="polite"></div>
     </div>
   </section>
 
   <section id="origens">
-    <p class="eyebrow" data-t="49">De onde</p>
-    <h2 data-t="50">Da tela, do iPhone, do Claude.</h2>
+    <p class="eyebrow">De onde</p>
+    <h2>Da tela, do iPhone, do Claude.</h2>
     <div class="flows">
       <article class="flow glass">
-        <h3 data-t="51">Do app</h3>
-        <p data-t="52">A interface roda no navegador do Mac, do iPhone ou de qualquer aparelho da casa. Na Tela de Início do iPhone ela abre em tela cheia, como um app.</p>
+        <h3>Do app</h3>
+        <p>A interface roda no navegador do Mac, do iPhone ou de qualquer aparelho da casa. Na Tela de Início do iPhone ela abre em tela cheia, como um app.</p>
         <div class="share"><span>Redação com a fila ao vivo</span><span>Peças com prévia do tamanho do papel</span><span>Editor livre e modelos salvos</span></div>
       </article>
       <article class="flow glass">
-        <h3 data-t="53">Do iPhone, pelo AirPrint</h3>
-        <p data-t="54">O Prelo se anuncia como impressora na rede de casa. Qualquer app que imprime, imprime no Prelo: uma foto, um PDF, uma página, um texto do Notas.</p>
+        <h3>Do iPhone, pelo AirPrint</h3>
+        <p>O Prelo se anuncia como impressora na rede de casa. Qualquer app que imprime, imprime no Prelo: uma foto, um PDF, uma página, um texto do Notas.</p>
         <div class="share"><span>Compartilhar</span><span>Imprimir</span><span>Impressora: Prelo</span></div>
       </article>
       <article class="flow glass">
-        <h3 data-t="55">Do Claude, pelo MCP</h3>
-        <p data-t="56">O Prelo tem um servidor MCP embutido. Conectado ao Claude Code ou ao Claude Desktop, ele vira o repórter da casa.</p>
+        <h3>Do Claude, pelo MCP</h3>
+        <p>O Prelo tem um servidor MCP embutido. Conectado ao Claude Code ou ao Claude Desktop, ele vira o repórter da casa.</p>
         <div class="chat">
-          <div class="bubble you"><b data-t="57">você</b>imprime a lista do mercado: café, ovos, leite e pão</div>
-          <div class="bubble ai"><b data-t="58">Claude</b>Impresso (48 mm de papel). Quer que eu coloque na agenda de amanhã também?</div>
+          <div class="bubble you"><b>você</b>imprime a lista do mercado: café, ovos, leite e pão</div>
+          <div class="bubble ai"><b>Claude</b>Impresso (48 mm de papel). Quer que eu coloque na agenda de amanhã também?</div>
         </div>
       </article>
     </div>
   </section>
 
+
+  <section id="app">
+    <p class="eyebrow">O app</p>
+    <h2>Uma redação de verdade, na tela.</h2>
+    <p class="muted">Capturas do app como ele é, em português e em inglês — troque o idioma no menu.</p>
+    <div class="shots glass">
+      <div role="tablist" aria-label="Telas do app" id="shot-tabs">
+        <button type="button" role="tab" data-shot="newsroom" aria-selected="true">Redação</button>
+        <button type="button" role="tab" data-shot="reporter">Repórter IA</button>
+        <button type="button" role="tab" data-shot="note">Peça</button>
+        <button type="button" role="tab" data-shot="editor">Editor</button>
+        <button type="button" role="tab" data-shot="newspaper">Jornal</button>
+        <button type="button" role="tab" data-shot="settings">Ajustes</button>
+        <button type="button" role="tab" data-shot="history">Histórico</button>
+      </div>
+      <div class="mac-window">
+        <div class="mac-bar"><span></span><span></span><span></span><em>Prelo</em></div>
+        <img id="shot-img" src="img/app/pt-BR-newsroom.jpg" alt="Tela da Redação do Prelo" width="2560" height="1720" loading="lazy">
+      </div>
+    </div>
+  </section>
+
   <section id="como">
-    <p class="eyebrow" data-t="59">Como roda</p>
-    <h2 data-t="60">Um servidor pequeno em Rust; cada app é só a casca.</h2>
+    <p class="eyebrow">Como roda</p>
+    <h2>Um servidor pequeno em Rust; cada app é só a casca.</h2>
     <div class="how">
       <article class="glass">
-        <h3 data-t="61">Prelo.app no Mac</h3>
+        <h3>Prelo.app no Mac</h3>
         <ul>
-          <li data-t="62">Fica na barra de menus e no Dock; a janela abre quando você quer.</li>
-          <li data-t="63">Anuncia a impressora AirPrint na rede de casa.</li>
-          <li data-t="64">Notificações nativas: “Imprimindo lista via MCP”, “Papel acabando”.</li>
-          <li data-t="65">Atualiza sozinho a partir desta página.</li>
+          <li>Fica na barra de menus e no Dock; a janela abre quando você quer.</li>
+          <li>Anuncia a impressora AirPrint na rede de casa.</li>
+          <li>Notificações nativas: “Imprimindo lista via MCP”, “Papel acabando”.</li>
+          <li>Atualiza sozinho a partir desta página.</li>
         </ul>
       </article>
       <article class="glass">
-        <h3 data-t="66">Docker, sem interface</h3>
+        <h3>Docker, sem interface</h3>
         <ul>
-          <li data-t="67">Para um servidor de casa (Unraid, NAS): a mesma interface web e o mesmo MCP.</li>
-          <li data-t="68">AirPrint pelo avahi na rede do host.</li>
-          <li data-t="69">Ajustes por variáveis de ambiente ou pela tela.</li>
+          <li>Para um servidor de casa (Unraid, NAS): a mesma interface web e o mesmo MCP.</li>
+          <li>AirPrint pelo avahi na rede do host.</li>
+          <li>Ajustes por variáveis de ambiente ou pela tela.</li>
         </ul>
       </article>
       <article class="glass">
-        <h3 data-t="70">A impressora</h3>
+        <h3>A impressora</h3>
         <ul>
-          <li data-t="71">Qualquer térmica de 80 mm que fale ESC/POS pela rede (porta 9100).</li>
-          <li data-t="72">Fotos saem pontilhadas; texto, em preto puro; corte automático.</li>
-          <li data-t="73">“Procurar impressora na rede” acha a sua.</li>
+          <li>Qualquer térmica de 80 mm que fale ESC/POS pela rede (porta 9100).</li>
+          <li>Fotos saem pontilhadas; texto, em preto puro; corte automático.</li>
+          <li>“Procurar impressora na rede” acha a sua.</li>
         </ul>
       </article>
       <article class="glass">
-        <h3 data-t="74">Aberto por construção</h3>
+        <h3>Aberto por construção</h3>
         <ul>
-          <li data-t="75">API HTTP: tudo que a tela faz, dá para fazer por script ou automação.</li>
-          <li data-t="76">Home Assistant de um lado (dados do jornal), MCP do outro (o Claude imprime).</li>
-          <li data-t="77">Rust + Tauri + React; licença MIT.</li>
+          <li>API HTTP: tudo que a tela faz, dá para fazer por script ou automação.</li>
+          <li>Home Assistant de um lado (dados do jornal), MCP do outro (o Claude imprime).</li>
+          <li>Rust + Tauri + React; licença MIT.</li>
         </ul>
       </article>
     </div>
   </section>
 
   <section id="instalar">
-    <p class="eyebrow" data-t="78">Instalar no Mac</p>
-    <h2 data-t="79">Cinco passos, uma vez só.</h2>
+    <p class="eyebrow">Instalar no Mac</p>
+    <h2>Cinco passos, uma vez só.</h2>
     <ol class="steps">
-      <li class="glass"><div><b data-t="80">Baixe o <code>.dmg</code></b><span>Botão acima (Apple Silicon). As versões anteriores ficam na lista abaixo.</span></div></li>
-      <li class="glass"><div><b data-t="81">Arraste o Prelo para Aplicativos</b><span>Como qualquer app.</span></div></li>
-      <li class="glass"><div><b data-t="82">Na primeira vez: botão direito → Abrir</b><span>O Prelo é assinado pelo próprio projeto, não pela Apple, então o macOS pede essa confirmação uma vez.</span></div></li>
-      <li class="glass"><div><b data-t="83">Permita “Rede Local”</b><span>É assim que ele fala com a impressora e aparece no iPhone como AirPrint.</span></div></li>
-      <li class="glass"><div><b data-t="84">Ajustes → endereço da impressora</b><span>Ou “Procurar impressora na rede”. Pronto: imprima um recado.</span></div></li>
+      <li class="glass"><div><b>Baixe o <code>.dmg</code></b><span>Botão acima (Apple Silicon). As versões anteriores ficam na lista abaixo.</span></div></li>
+      <li class="glass"><div><b>Arraste o Prelo para Aplicativos</b><span>Como qualquer app.</span></div></li>
+      <li class="glass"><div><b>Na primeira vez: botão direito → Abrir</b><span>O Prelo é assinado pelo próprio projeto, não pela Apple, então o macOS pede essa confirmação uma vez.</span></div></li>
+      <li class="glass"><div><b>Permita “Rede Local”</b><span>É assim que ele fala com a impressora e aparece no iPhone como AirPrint.</span></div></li>
+      <li class="glass"><div><b>Ajustes → endereço da impressora</b><span>Ou “Procurar impressora na rede”. Pronto: imprima um recado.</span></div></li>
     </ol>
   </section>
 
   <section id="versoes">
-    <p class="eyebrow" data-t="85">Versões</p>
-    <h2 data-t="86">Todas ficam aqui.</h2>
-    <p class="muted" data-t="87">O app se atualiza sozinho; se precisar de uma versão anterior, ela continua disponível.</p>
-    <div class="releases" id="releases"><p class="muted" data-t="88">buscando as versões…</p></div>
+    <p class="eyebrow">Versões</p>
+    <h2>Todas ficam aqui.</h2>
+    <p class="muted">O app se atualiza sozinho; se precisar de uma versão anterior, ela continua disponível.</p>
+    <div class="releases" id="releases"><p class="muted">buscando as versões…</p></div>
   </section>
 </main>
 
@@ -422,6 +460,40 @@ Banana</textarea></label>
 </footer>
 
 <script>
+  // --- language: Portuguese is the source; English comes from i18n-en.json, matched by the Portuguese text
+  const LANG = { value: localStorage.getItem("prelo-site-lang") || (navigator.language.toLowerCase().startsWith("pt") ? "pt" : "en") };
+  const PT = new Map();
+  let EN = {};
+  const norm = (h) => h.replace(/\s+/g, " ").trim();
+  const translatable = () => [...document.querySelectorAll("nav a, nav button, main h1, main h2, main h3, main p, main li, main label, main summary, main figcaption, main button, main b, main small, main .bubble, main .share span, main .steps span, main .eyebrow, main .version, footer span")];
+  const applyLang = () => {
+    const en = LANG.value === "en";
+    for (const el of translatable()) {
+      if (!PT.has(el)) PT.set(el, el.innerHTML);
+      const pt = PT.get(el);
+      if (en) { const tr = EN[norm(pt)]; if (tr) el.innerHTML = tr; } else el.innerHTML = pt;
+    }
+    document.documentElement.lang = en ? "en" : "pt-BR";
+    const b = document.getElementById("lang"); b.textContent = en ? "PT" : "EN"; b.setAttribute("aria-label", en ? "Português" : "English");
+    if (window.renderGallery) window.renderGallery();
+    if (window.renderDemo) window.renderDemo();
+    if (window.renderShot) window.renderShot();
+    if (window.renderReleases) window.renderReleases();
+  };
+  fetch("i18n-en.json").then((r) => r.json()).then((d) => { EN = d; applyLang(); }).catch(() => applyLang());
+  document.getElementById("lang").addEventListener("click", () => { LANG.value = LANG.value === "en" ? "pt" : "en"; localStorage.setItem("prelo-site-lang", LANG.value); applyLang(); });
+  // --- app screenshots
+  (() => {
+    const tabs = document.getElementById("shot-tabs"), img = document.getElementById("shot-img");
+    let current = "newsroom";
+    window.renderShot = () => { img.src = `img/app/${LANG.value === "en" ? "en" : "pt-BR"}-${current}.jpg`; };
+    tabs.addEventListener("click", (e) => {
+      const b = e.target.closest("[data-shot]"); if (!b) return;
+      current = b.dataset.shot;
+      for (const t of tabs.children) t.setAttribute("aria-selected", t === b);
+      window.renderShot();
+    });
+  })();
   // the pill in the top menu slides to the section on screen (and stays put on hover/click)
   (() => {
     const nav = document.querySelector(".masthead nav"), pill = nav.querySelector(".pill");
