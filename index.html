@@ -144,6 +144,15 @@
   @keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
   @media (max-width: 599px) { .approval { grid-template-columns: 1fr; } .approval .strip { width: 140px; } }
 
+  .iphone { margin-top: 24px; padding: 26px; }
+  .iphone h3 { font-size: 26px; margin: 6px 0 10px; }
+  .mini-steps { list-style: none; counter-reset: s; padding: 0; margin: 14px 0 18px; display: grid; gap: 10px; }
+  .mini-steps li { display: grid; grid-template-columns: 28px 1fr; gap: 10px; align-items: start; counter-increment: s; }
+  .mini-steps li::before { content: counter(s); width: 28px; height: 28px; border-radius: 50%; background: var(--ink); color: var(--bg-a); display: grid; place-items: center; font: 600 13px/1 var(--cond); }
+  .mini-steps b { display: block; font-family: var(--cond); font-weight: 600; letter-spacing: .06em; text-transform: uppercase; font-size: 13px; }
+  .mini-steps span { color: var(--muted); font-size: 15px; }
+  .source-url { font: 13px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--muted); word-break: break-all; }
+
   section { padding: 56px 0; scroll-margin-top: 84px; } /* anchors land below the sticky menu */
   @media (max-width: 599px) { section { padding: 40px 0; } }
   .features { display: grid; gap: 16px; grid-template-columns: repeat(3, 1fr); }
@@ -534,6 +543,22 @@ Banana</textarea></label>
       <li class="glass"><div><b>Permita “Rede Local”</b><span>É assim que ele fala com a impressora e aparece no iPhone como AirPrint.</span></div></li>
       <li class="glass"><div><b>Ajustes → endereço da impressora</b><span>Ou “Procurar impressora na rede”. Pronto: imprima um recado.</span></div></li>
     </ol>
+    <div class="iphone glass" id="iphone">
+      <div>
+        <p class="eyebrow">No iPhone</p>
+        <h3>O app do celular, pela AltStore.</h3>
+        <p class="muted">O Prelo do iPhone usa o Mac como hub. Sem loja: a AltStore instala e mantém o app assinado com o seu Apple ID, e o AltServer no Mac renova sozinho.</p>
+        <ol class="mini-steps">
+          <li><b>AltServer no Mac</b><span>Menu do Prelo → “Instalar o AltServer”, ou altstore.io. Com ele, instale a AltStore no iPhone.</span></li>
+          <li><b>Adicione a fonte</b><span>Na AltStore, Sources → “+” e cole a URL abaixo, ou toque no botão pelo iPhone.</span></li>
+          <li><b>Instale o Prelo</b><span>Ele aparece na fonte. As versões novas chegam pela própria AltStore.</span></li>
+        </ol>
+        <div class="ctas">
+          <a class="btn primary" href="altstore://source?url=https://preloprinter.github.io/altstore.json">Adicionar à AltStore</a>
+          <code class="source-url">https://preloprinter.github.io/altstore.json</code>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section id="versoes">
@@ -557,7 +582,7 @@ Banana</textarea></label>
   const PT = new Map();
   let EN = {};
   const norm = (h) => h.replace(/\s+/g, " ").trim();
-  const translatable = () => [...document.querySelectorAll("nav a, nav button, main h1, main h2, main h3, main p, main li, main label, main summary, main figcaption, main button, main b, main small, main .bubble, main .share span, main .steps span, main .eyebrow, main .version, main .btn span, main .pet-hint, main .pet-btn, footer span")];
+  const translatable = () => [...document.querySelectorAll("nav a, nav button, main h1, main h2, main h3, main p, main li, main label, main summary, main figcaption, main button, main b, main small, main .bubble, main .share span, main .steps span, main .eyebrow, main .version, main .btn span, main .pet-hint, main .pet-btn, main .mini-steps b, main .mini-steps span, footer span")];
   const applyLang = () => {
     const en = LANG.value === "en";
     for (const el of translatable()) {

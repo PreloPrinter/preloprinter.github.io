@@ -113,5 +113,15 @@
  "<b>Claude Code ou a API da Anthropic</b>Use o Claude Code já instalado no Mac (a sua assinatura) ou uma chave da API. Modelo à sua escolha.": "<b>Claude Code or the Anthropic API</b>Use the Claude Code already on your Mac (your subscription) or an API key. The model is your call.",
  "<b>Nada sai sem você</b>Cada impressão para num cartão com a prévia. Aprove na tela — ou diga \"pode imprimir\" na conversa.": "<b>Nothing prints without you</b>Every print stops in a card with the preview. Approve on screen, or just say \"go ahead\" in the chat.",
  "<b>Um mascote com personalidade</b>O Claudinho comenta o dia, o tempo e o que já saiu — falas escritas pelo Claude no modelo mais barato, uma dúzia por vez, sem repetir.": "<b>A mascot with personality</b>Claudinho comments on the day, the weather and what came out, with lines written by Claude on the cheapest model, a dozen at a time, never repeating.",
- "Ajustes do repórter": "Reporter settings"
+ "Ajustes do repórter": "Reporter settings",
+ "No iPhone": "On the iPhone",
+ "O app do celular, pela AltStore.": "The phone app, through AltStore.",
+ "O Prelo do iPhone usa o Mac como hub. Sem loja: a AltStore instala e mantém o app assinado com o seu Apple ID, e o AltServer no Mac renova sozinho.": "Prelo on the iPhone uses the Mac as its hub. No store: AltStore installs the app and keeps it signed with your Apple ID, and AltServer on the Mac renews it by itself.",
+ "AltServer no Mac": "AltServer on the Mac",
+ "Menu do Prelo → “Instalar o AltServer”, ou altstore.io. Com ele, instale a AltStore no iPhone.": "Prelo's menu → “Install AltServer”, or altstore.io. With it, install AltStore on the iPhone.",
+ "Adicione a fonte": "Add the source",
+ "Na AltStore, Sources → “+” e cole a URL abaixo, ou toque no botão pelo iPhone.": "In AltStore, Sources → “+” and paste the URL below, or tap the button from the iPhone.",
+ "Instale o Prelo": "Install Prelo",
+ "Ele aparece na fonte. As versões novas chegam pela própria AltStore.": "It shows up in the source. New versions arrive through AltStore itself.",
+ "Adicionar à AltStore": "Add to AltStore"
 }

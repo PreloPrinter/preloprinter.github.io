@@ -1,0 +1,8 @@
+{
+  "name": "Prelo",
+  "identifier": "io.github.preloprinter",
+  "subtitle": "A impressora térmica da casa",
+  "website": "https://preloprinter.github.io",
+  "tintColor": "d7281e",
+  "apps": []
+}
