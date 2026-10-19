@@ -15,6 +15,14 @@
       "tintColor": "d7281e",
       "versions": [
         {
+          "version": "0.26.0",
+          "date": "2026-10-19",
+          "size": 3179392,
+          "downloadURL": "https://github.com/PreloPrinter/preloprinter.github.io/releases/download/v0.26.0/Prelo_0.26.0_ios.ipa",
+          "localizedDescription": "## [0.26.0](https://github.com/PreloPrinter/prelo/compare/v0.25.3...v0.26.0) (2026-10-19)\n\n### Novidades\n\n* **web:** tela \"No celular\" no menu da engrenagem — passos da AltStore PAL → Classic → Remote AltServer → fonte do Prelo, QR da fonte e QR deste hub para o Safari, com o AltServer do Mac como reserva ([8e877dc](https://github.com/PreloPrinter/prelo/commit/8e877dcdb174ecafb300b5c706dc6755d484d7d8))",
+          "minOSVersion": "15.0"
+        },
+        {
           "version": "0.25.3",
           "date": "2026-10-19",
           "size": 3178928,
