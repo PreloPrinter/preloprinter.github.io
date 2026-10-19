@@ -15,6 +15,14 @@
       "tintColor": "d7281e",
       "versions": [
         {
+          "version": "0.28.0",
+          "date": "2026-10-19",
+          "size": 3246698,
+          "downloadURL": "https://github.com/PreloPrinter/preloprinter.github.io/releases/download/v0.28.0/Prelo_0.28.0_ios.ipa",
+          "localizedDescription": "## [0.28.0](https://github.com/PreloPrinter/prelo/compare/v0.27.0...v0.28.0) (2026-10-19)\n\n### Novidades\n\n* **web:** celular — cabeçalho compacto (data numa linha, nº primeiro), barra de baixo na ordem do desktop (Redação, Repórter, Editor, Caderno, Mais), cartões com respiro menor, botões da edição empilhados; Hubs e No celular com ritmo único de seções, dois caminhos iguais e QRs em tiles; hub que passa a pedir chave manda o app de volta ao seletor com aviso ([64cc00c](https://github.com/PreloPrinter/prelo/commit/64cc00c3cc507ae693de6c8952ae393c9317f2e5))",
+          "minOSVersion": "15.0"
+        },
+        {
           "version": "0.27.0",
           "date": "2026-10-19",
           "size": 3293313,
