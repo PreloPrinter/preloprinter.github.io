@@ -15,6 +15,14 @@
       "tintColor": "d7281e",
       "versions": [
         {
+          "version": "0.27.0",
+          "date": "2026-10-19",
+          "size": 3293313,
+          "downloadURL": "https://github.com/PreloPrinter/preloprinter.github.io/releases/download/v0.27.0/Prelo_0.27.0_ios.ipa",
+          "localizedDescription": "## [0.27.0](https://github.com/PreloPrinter/prelo/compare/v0.26.0...v0.27.0) (2026-10-19)\n\n### Novidades\n\n* **desktop:** o AltServer oficial volta a vir dentro do Prelo e abre junto por padrão — plano B para quando os Remote AltServers da AltStore estiverem fora; a tela No celular ganha o passo a passo pelo Mac e os controles do menu ([927ade4](https://github.com/PreloPrinter/prelo/commit/927ade463eab32c01d731440356b6b9826ab4346))\n\n### Correções\n\n* **build:** restaura tools/build-mac.sh (commit anterior o levou vazio) com o AltServer embutido; abrir junto por padrão; plano B na tela No celular ([0f8e3b3](https://github.com/PreloPrinter/prelo/commit/0f8e3b3c48fdf8ff81fc8c3a78cc571271169eae))",
+          "minOSVersion": "15.0"
+        },
+        {
           "version": "0.26.0",
           "date": "2026-10-19",
           "size": 3179392,
