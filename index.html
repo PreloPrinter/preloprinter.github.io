@@ -151,6 +151,7 @@
   .mini-steps li::before { content: counter(s); width: 28px; height: 28px; border-radius: 50%; background: var(--ink); color: var(--bg-a); display: grid; place-items: center; font: 600 13px/1 var(--cond); }
   .mini-steps b { display: block; font-family: var(--cond); font-weight: 600; letter-spacing: .06em; text-transform: uppercase; font-size: 13px; }
   .mini-steps span { color: var(--muted); font-size: 15px; }
+  .muted.small { font-size: 14px; margin-top: 14px; }
   .source-url { font: 13px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--muted); word-break: break-all; }
 
   section { padding: 56px 0; scroll-margin-top: 84px; } /* anchors land below the sticky menu */
@@ -546,17 +547,19 @@ Banana</textarea></label>
     <div class="iphone glass" id="iphone">
       <div>
         <p class="eyebrow">No iPhone</p>
-        <h3>O app do celular, pela AltStore.</h3>
-        <p class="muted">O Prelo do iPhone usa o Mac como hub. Sem loja: a AltStore instala e mantém o app assinado com o seu Apple ID, e o AltServer no Mac renova sozinho.</p>
+        <h3>O app do celular, sem computador.</h3>
+        <p class="muted">O Prelo do iPhone usa o Mac como hub. Ele chega pela AltStore, assinado com o seu Apple ID; no iOS 27 (Brasil, União Europeia e Japão) tudo acontece no próprio aparelho.</p>
         <ol class="mini-steps">
-          <li><b>AltServer no Mac</b><span>Menu do Prelo → “Instalar o AltServer”, ou altstore.io. Com ele, instale a AltStore no iPhone.</span></li>
-          <li><b>Adicione a fonte</b><span>Na AltStore, Sources → “+” e cole a URL abaixo, ou toque no botão pelo iPhone.</span></li>
-          <li><b>Instale o Prelo</b><span>Ele aparece na fonte. As versões novas chegam pela própria AltStore.</span></li>
+          <li><b>AltStore Classic pela AltStore PAL</b><span>A PAL é a loja alternativa; o Classic, instalado por ela, é o que aceita apps de fora.</span></li>
+          <li><b>Ajustes do Classic → Set up Remote AltServer</b><span>Siga o guia. Ele pareia o aparelho sozinho e instala um perfil de VPN local; precisa de Wi-Fi.</span></li>
+          <li><b>Adicione a fonte do Prelo</b><span>Sources → “+” e cole a URL abaixo, ou toque no botão pelo iPhone.</span></li>
+          <li><b>Instale o Prelo</b><span>As versões novas chegam pela própria AltStore; a renovação semanal é automática.</span></li>
         </ol>
         <div class="ctas">
           <a class="btn primary" href="altstore://source?url=https://preloprinter.github.io/altstore.json">Adicionar à AltStore</a>
           <code class="source-url">https://preloprinter.github.io/altstore.json</code>
         </div>
+        <p class="muted small">Sem iOS 27? O AltServer no Mac faz o mesmo papel (menu do Prelo → AltServer). E a interface do Prelo no Safari, com “Adicionar à Tela de Início”, funciona em qualquer iPhone sem instalar nada.</p>
       </div>
     </div>
   </section>
