@@ -113,6 +113,7 @@
   .pet-hint { font: 500 12px/1 var(--cond); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
   .reporter-points { list-style: none; padding: 0; margin: 18px 0 0; display: grid; gap: 12px; }
   .reporter-points li { display: flex; gap: 12px; align-items: flex-start; color: var(--muted); font-size: 15px; }
+  .reporter-points li span { display: block; }
   .reporter-points li b { color: var(--ink); display: block; font-family: var(--cond); font-weight: 600; letter-spacing: .06em; text-transform: uppercase; font-size: 13px; margin-bottom: 2px; }
   .reporter-points svg { width: 20px; height: 20px; flex: none; color: var(--accent); margin-top: 2px; }
   .chat { padding: 18px; display: grid; gap: 10px; min-height: 420px; align-content: start; }
@@ -149,7 +150,7 @@
   .iphone { margin-top: 24px; padding: 26px; }
   .iphone h3 { font-size: 26px; margin: 6px 0 10px; }
   .mini-steps { list-style: none; counter-reset: s; padding: 0; margin: 14px 0 18px; display: grid; gap: 10px; }
-  .mini-steps li { display: grid; grid-template-columns: 28px 1fr; gap: 10px; align-items: start; counter-increment: s; }
+  .mini-steps li { display: grid; grid-template-columns: 28px 1fr; gap: 2px 10px; align-items: start; counter-increment: s; }
   .mini-steps li::before { content: counter(s); width: 28px; height: 28px; border-radius: 50%; background: var(--ink); color: var(--bg-a); display: grid; place-items: center; font: 600 13px/1 var(--cond); }
   .mini-steps b, .mini-steps span { grid-column: 2; }
   .mini-steps b { display: block; font-family: var(--cond); font-weight: 600; letter-spacing: .06em; text-transform: uppercase; font-size: 13px; }
@@ -174,6 +175,7 @@
   .phone-copy .reporter-points { margin-top: 22px; }
   .phone-copy .iphone-steps { margin-top: 26px; }
 
+  .wordmark { margin-right: 18px; }
   section { padding: 56px 0; scroll-margin-top: 84px; } /* anchors land below the sticky menu */
   @media (max-width: 599px) { section { padding: 40px 0; } }
   .features { display: grid; gap: 16px; grid-template-columns: repeat(3, 1fr); }
@@ -407,9 +409,9 @@
           <span class="pet-hint">Cutuque o Claudinho</span>
         </div>
         <ul class="reporter-points">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.6L18 9.4l-4.2 1.8L12 16l-1.8-4.8L6 9.4l4.2-1.8z"/><path d="M19 15l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg><div><b>Claude Code ou a API da Anthropic</b>Use o Claude Code já instalado no Mac (a sua assinatura) ou uma chave da API. Modelo à sua escolha.</div></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/></svg><div><b>Nada sai sem você</b>Cada impressão para num cartão com a prévia. Aprove na tela — ou diga "pode imprimir" na conversa.</div></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><div><b>Um mascote com personalidade</b>O Claudinho comenta o dia, o tempo e o que já saiu — falas escritas pelo Claude no modelo mais barato, uma dúzia por vez, sem repetir.</div></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.6L18 9.4l-4.2 1.8L12 16l-1.8-4.8L6 9.4l4.2-1.8z"/><path d="M19 15l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg><div><b>Claude Code ou a API da Anthropic</b><span>Use o Claude Code já instalado no Mac (a sua assinatura) ou uma chave da API. Modelo à sua escolha.</span></div></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/></svg><div><b>Nada sai sem você</b><span>Cada impressão para num cartão com a prévia. Aprove na tela — ou diga "pode imprimir" na conversa.</span></div></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><div><b>Um mascote com personalidade</b><span>O Claudinho comenta o dia, o tempo e o que já saiu — falas escritas pelo Claude no modelo mais barato, uma dúzia por vez, sem repetir.</span></div></li>
         </ul>
       </div>
       <div class="chat glass" id="chat" aria-label="Conversa de exemplo com o repórter"></div>
@@ -537,9 +539,9 @@ Banana</textarea></label>
         <h2>A mesma redação, <em>no bolso.</em></h2>
         <p class="muted">O app do iPhone é a mesma interface do Mac apontada para um hub da casa: ele acha o Mac pela rede, entra com um QR e usa a impressora e o Repórter IA de lá. Sem loja: chega pela AltStore.</p>
         <ul class="reporter-points">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8a6 6 0 0 1 0 8.4M7.8 16.2a6 6 0 0 1 0-8.4M19.1 4.9a10 10 0 0 1 0 14.2M4.9 19.1a10 10 0 0 1 0-14.2"/></svg><div><b>Acha o hub sozinho</b>O Mac com a impressora se anuncia na rede; o app lista, você toca e entra. Vários Macs? Escolha um.</div></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM18 18h3v3h-3z"/></svg><div><b>Entra com um QR</b>Se o hub pede chave, o Mac mostra um QR de pareamento com endereço e chave. A câmera do app lê e pronto.</div></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.6L18 9.4l-4.2 1.8L12 16l-1.8-4.8L6 9.4l4.2-1.8z"/></svg><div><b>Tudo que o Mac faz</b>Recados, listas, etiquetas, o jornal e a conversa com o repórter, com o Claudinho junto. A aprovação de impressão continua na sua mão.</div></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8a6 6 0 0 1 0 8.4M7.8 16.2a6 6 0 0 1 0-8.4M19.1 4.9a10 10 0 0 1 0 14.2M4.9 19.1a10 10 0 0 1 0-14.2"/></svg><div><b>Acha o hub sozinho</b><span>O Mac com a impressora se anuncia na rede; o app lista, você toca e entra. Vários Macs? Escolha um.</span></div></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM18 18h3v3h-3z"/></svg><div><b>Entra com um QR</b><span>Se o hub pede chave, o Mac mostra um QR de pareamento com endereço e chave. A câmera do app lê e pronto.</span></div></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.6L18 9.4l-4.2 1.8L12 16l-1.8-4.8L6 9.4l4.2-1.8z"/></svg><div><b>Tudo que o Mac faz</b><span>Recados, listas, etiquetas, o jornal e a conversa com o repórter, com o Claudinho junto. A aprovação de impressão continua na sua mão.</span></div></li>
         </ul>
         <div class="iphone-steps">
           <p class="eyebrow">Instalar</p>
@@ -631,7 +633,7 @@ Banana</textarea></label>
   const PT = new Map();
   let EN = {};
   const norm = (h) => h.replace(/\s+/g, " ").trim();
-  const translatable = () => [...document.querySelectorAll("nav a, nav button, main h1, main h2, main h3, main p, main li, main label, main summary, main figcaption, main button, main b, main small, main .bubble, main .share span, main .steps span, main .eyebrow, main .version, main .btn span, main .pet-hint, main .pet-btn, main .mini-steps b, main .mini-steps span, footer span")];
+  const translatable = () => [...document.querySelectorAll("nav a, nav button, main h1, main h2, main h3, main p, main li, main label, main summary, main figcaption, main button, main b, main small, main .bubble, main .share span, main .steps span, main .eyebrow, main .version, main .btn span, main .pet-hint, main .pet-btn, main .mini-steps b, main .mini-steps span, main .reporter-points span, footer span")];
   const applyLang = () => {
     const en = LANG.value === "en";
     for (const el of translatable()) {
