@@ -114,7 +114,7 @@
 
   /* live demo: write and see the paper */
   .demo { display: grid; grid-template-columns: 1fr 320px; gap: 28px; padding: 24px; align-items: start; }
-  .demo form { display: grid; gap: 12px; }
+  .demo form, .demo [data-for] { display: grid; gap: 14px; }
   .demo label { display: grid; gap: 6px; font: 600 15px/1.2 var(--serif); }
   .demo input, .demo textarea { width: 100%; min-height: 44px; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--glass-border); background: rgba(255,255,255,.05); color: var(--ink); font: 16px/1.4 var(--serif); }
   .demo textarea { resize: vertical; min-height: 96px; }
@@ -137,7 +137,7 @@
   .demo select { width: 100%; min-height: 44px; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--glass-border); background: rgba(255,255,255,.05); color: var(--ink); font: 16px/1.4 var(--serif); }
   .demo input[type="range"] { accent-color: var(--accent); min-height: 24px; padding: 0; }
   .demo input[type="checkbox"] { width: 22px; height: 22px; min-height: 0; accent-color: var(--accent); }
-  .demo label.row { grid-template-columns: auto 1fr; display: flex; align-items: center; gap: 10px; }
+  .demo label.row { display: flex; align-items: center; gap: 10px; min-height: 44px; }
   .demo input[type="file"] { padding: 8px; font: 14px/1.4 var(--serif); }
   .paper-live .p-nbdate { font: 700 13px/1.3 var(--serif); margin: 0 0 2px; }
   .paper-live .p-nbtitle { font: 700 16px/1.2 var(--cond); margin: 0 0 6px; padding-bottom: 4px; border-bottom: 2px solid #151515; }
@@ -307,7 +307,7 @@ Banana</textarea></label>
           <label>Estilo
             <select id="d-style"><option value="lined">Pautado</option><option value="grid">Quadriculado</option><option value="dotted" selected>Pontilhado</option></select>
           </label>
-          <label>Linhas: <output id="d-lines-out">8</output> <input id="d-lines" type="range" min="4" max="24" value="8"></label>
+          <label><span>Linhas: <output id="d-lines-out">8</output></span><input id="d-lines" type="range" min="4" max="24" value="8"></label>
           <label>Espaço entre linhas
             <select id="d-spacing"><option value="6">Estreito (6 mm)</option><option value="7" selected>Médio (7 mm)</option><option value="9">Largo (9 mm)</option></select>
           </label>
