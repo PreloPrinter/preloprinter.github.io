@@ -15,6 +15,14 @@
       "tintColor": "d7281e",
       "versions": [
         {
+          "version": "0.25.2",
+          "date": "2026-10-19",
+          "size": 3178109,
+          "downloadURL": "https://github.com/PreloPrinter/preloprinter.github.io/releases/download/v0.25.2/Prelo_0.25.2_ios.ipa",
+          "localizedDescription": "## [0.25.2](https://github.com/PreloPrinter/prelo/compare/v0.25.1...v0.25.2) (2026-10-19)\n\n### Correções\n\n* **build:** assinatura do tarball do atualizador pelo signer com a chave em arquivo ([e31289e](https://github.com/PreloPrinter/prelo/commit/e31289e77cfa285e1892e43161a898fc85ac228c))",
+          "minOSVersion": "15.0"
+        },
+        {
           "version": "0.25.1",
           "date": "2026-10-19",
           "size": 3178064,
