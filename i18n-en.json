@@ -106,5 +106,12 @@
  "Jornal": "Newspaper",
  "Ajustes": "Settings",
  "Histórico": "History",
- "Capturas do app como ele é, em português e em inglês — troque o idioma no menu.": "Screenshots of the app as it is, in Portuguese and English — switch the language in the menu."
+ "Capturas do app como ele é, em português e em inglês — troque o idioma no menu.": "Screenshots of the app as it is, in Portuguese and English — switch the language in the menu.",
+ "Peça com suas palavras. <em>Sai no papel.</em>": "Ask in your own words. <em>It comes out on paper.</em>",
+ "Um repórter movido a Claude mora na Redação: monta a peça, mostra a prévia e manda imprimir. Nada sai sem você aprovar na tela.": "A Claude-powered reporter lives in the Newsroom: it builds the piece, shows the preview and sends it to print. Nothing comes out without your approval on screen.",
+ "Cutuque o Claudinho": "Poke Claudinho",
+ "<b>Claude Code ou a API da Anthropic</b>Use o Claude Code já instalado no Mac (a sua assinatura) ou uma chave da API. Modelo à sua escolha.": "<b>Claude Code or the Anthropic API</b>Use the Claude Code already on your Mac (your subscription) or an API key. The model is your call.",
+ "<b>Nada sai sem você</b>Cada impressão para num cartão com a prévia. Aprove na tela — ou diga \"pode imprimir\" na conversa.": "<b>Nothing prints without you</b>Every print stops in a card with the preview. Approve on screen, or just say \"go ahead\" in the chat.",
+ "<b>Um mascote com personalidade</b>O Claudinho comenta o dia, o tempo e o que já saiu — falas escritas pelo Claude no modelo mais barato, uma dúzia por vez, sem repetir.": "<b>A mascot with personality</b>Claudinho comments on the day, the weather and what came out, with lines written by Claude on the cheapest model, a dozen at a time, never repeating.",
+ "Ajustes do repórter": "Reporter settings"
 }
