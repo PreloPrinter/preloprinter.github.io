@@ -32,8 +32,9 @@
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { margin: 0; color: var(--ink); background: var(--bg-a); font: 16px/1.55 var(--serif); -webkit-font-smoothing: antialiased; }
-  .background { position: fixed; inset: 0; z-index: -1; background: radial-gradient(1200px 700px at 80% -10%, rgba(215,40,30,.28), transparent 60%), radial-gradient(900px 600px at -10% 90%, rgba(255,220,180,.10), transparent 60%), linear-gradient(180deg, var(--bg-a), var(--bg-b)); }
+  html { background: var(--bg-b); }
+  body { margin: 0; color: var(--ink); background: var(--bg-b); font: 16px/1.55 var(--serif); -webkit-font-smoothing: antialiased; }
+  .background { position: fixed; top: 0; left: 0; right: 0; height: 100vh; height: 100lvh; z-index: -1; background: radial-gradient(1200px 700px at 80% -10%, rgba(215,40,30,.28), transparent 60%), radial-gradient(900px 600px at -10% 90%, rgba(255,220,180,.10), transparent 60%), linear-gradient(180deg, var(--bg-a), var(--bg-b)); }
   a { color: inherit; }
   img { max-width: 100%; display: block; }
   .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
@@ -248,7 +249,7 @@
       <div class="ctas">
         <a class="btn primary" id="dl" href="https://github.com/PreloPrinter/preloprinter.github.io/releases/latest">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
-          Baixar para Mac <small>Apple Silicon</small>
+          <span>Baixar para Mac</span> <small>Apple Silicon</small>
         </a>
         <span class="version" id="version">buscando a versão…</span>
       </div>
@@ -468,7 +469,7 @@ Banana</textarea></label>
   const PT = new Map();
   let EN = {};
   const norm = (h) => h.replace(/\s+/g, " ").trim();
-  const translatable = () => [...document.querySelectorAll("nav a, nav button, main h1, main h2, main h3, main p, main li, main label, main summary, main figcaption, main button, main b, main small, main .bubble, main .share span, main .steps span, main .eyebrow, main .version, footer span")];
+  const translatable = () => [...document.querySelectorAll("nav a, nav button, main h1, main h2, main h3, main p, main li, main label, main summary, main figcaption, main button, main b, main small, main .bubble, main .share span, main .steps span, main .eyebrow, main .version, main .btn span, footer span")];
   const applyLang = () => {
     const en = LANG.value === "en";
     for (const el of translatable()) {
@@ -612,7 +613,7 @@ Banana</textarea></label>
 
   // --- versions: the public releases of this repository; the download button points at the newest .dmg
   const API = "https://api.github.com/repos/PreloPrinter/preloprinter.github.io/releases";
-  const fmtDate = (iso) => new Date(iso).toLocaleDateString("pt-BR", { day: "numeric", month: "long", year: "numeric" });
+  const fmtDate = (iso) => new Date(iso).toLocaleDateString(LANG.value === "en" ? "en-US" : "pt-BR", { day: "numeric", month: "long", year: "numeric" });
   // markdown-lite for the notes: **bold**, *italic*, `code`, [links](url); the commit link at the end is dropped
   const mdInline = (l) => esc(l)
     .replace(/\s*\(\[[0-9a-f]+\]\([^)]*\)\)\s*$/, "")
@@ -624,22 +625,25 @@ Banana</textarea></label>
     ? `<strong>${esc(l.slice(4))}</strong>`
     : `<span>${mdInline(l.replace(/^[*-]\s+/, ""))}</span>`).join("");
   fetch(API).then((r) => r.json()).then((releases) => {
+    if (!Array.isArray(releases)) throw new Error(releases && releases.message || "api");
     const list = releases.filter((r) => !r.draft && !r.prerelease);
     const box = document.getElementById("releases");
-    if (!list.length) { box.innerHTML = '<p class="muted">Nenhuma versão publicada ainda.</p>'; return; }
+    if (!list.length) { box.innerHTML = `<p class="muted">${LANG.value === "en" ? "No version published yet." : "Nenhuma versão publicada ainda."}</p>`; return; }
     const latest = list[0];
     const dmg = latest.assets.find((a) => a.name.endsWith(".dmg"));
     if (dmg) { for (const id of ["dl", "dl-top"]) document.getElementById(id).href = dmg.browser_download_url; }
-    document.getElementById("version").textContent = `versão ${latest.tag_name.replace(/^v/, "")} · ${fmtDate(latest.published_at)}`;
+    const ver = document.getElementById("version");
+    ver.textContent = `${LANG.value === "en" ? "version" : "versão"} ${latest.tag_name.replace(/^v/, "")} · ${fmtDate(latest.published_at)}`;
+    PT.set(ver, ver.textContent); EN[ver.textContent] = ver.textContent.replace(/^versão/, "version");
     box.innerHTML = list.map((r, i) => `
       <article class="release glass${i === 0 ? " latest" : ""}">
-        <header><h3>Prelo ${esc(r.tag_name.replace(/^v/, ""))} ${i === 0 ? '<span class="badge">atual</span>' : ""}</h3><time datetime="${r.published_at}">${fmtDate(r.published_at)}</time></header>
+        <header><h3>Prelo ${esc(r.tag_name.replace(/^v/, ""))} ${i === 0 ? '<span class="badge">${LANG.value === "en" ? "latest" : "atual"}</span>' : ""}</h3><time datetime="${r.published_at}">${fmtDate(r.published_at)}</time></header>
         ${r.body ? `<div class="notes">${notesHtml(r.body)}</div>` : ""}
         <div class="assets">${r.assets.filter((a) => a.name.endsWith(".dmg")).map((a) => `<a href="${a.browser_download_url}">⬇ ${esc(a.name)} · ${(a.size / 1048576).toFixed(0)} MB</a>`).join("")}</div>
       </article>`).join("");
   }).catch(() => {
-    document.getElementById("version").textContent = "";
-    document.getElementById("releases").innerHTML = '<p class="muted">Não consegui listar as versões agora. <a href="https://github.com/PreloPrinter/preloprinter.github.io/releases">Veja no GitHub.</a></p>';
+    const ver = document.getElementById("version"); ver.textContent = ""; PT.set(ver, "");
+    document.getElementById("releases").innerHTML = `<p class="muted">${LANG.value === "en" ? "Could not list the versions right now." : "Não consegui listar as versões agora."} <a href="https://github.com/PreloPrinter/preloprinter.github.io/releases">${LANG.value === "en" ? "See them on GitHub." : "Veja no GitHub."}</a></p>`;
   });
 </script>
 </body>
