@@ -134,6 +134,18 @@
   .paper-live .p-title { font: 700 22px/1.1 var(--serif); margin: 0 0 4px; padding-bottom: 6px; border-bottom: 2px solid #151515; }
   .paper-live .p-big { font: 700 clamp(40px, 9vw, 64px)/1 var(--cond); text-align: center; margin: 0 0 8px; letter-spacing: -.01em; word-break: break-word; }
   .paper-live .p-detail { font: 17px/1.3 var(--serif); margin: 0; }
+  .demo select { width: 100%; min-height: 44px; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--glass-border); background: rgba(255,255,255,.05); color: var(--ink); font: 16px/1.4 var(--serif); }
+  .demo input[type="range"] { accent-color: var(--accent); min-height: 24px; padding: 0; }
+  .demo input[type="checkbox"] { width: 22px; height: 22px; min-height: 0; accent-color: var(--accent); }
+  .demo label.row { grid-template-columns: auto 1fr; display: flex; align-items: center; gap: 10px; }
+  .demo input[type="file"] { padding: 8px; font: 14px/1.4 var(--serif); }
+  .paper-live .p-nbdate { font: 700 13px/1.3 var(--serif); margin: 0 0 2px; }
+  .paper-live .p-nbtitle { font: 700 16px/1.2 var(--cond); margin: 0 0 6px; padding-bottom: 4px; border-bottom: 2px solid #151515; }
+  .paper-live .p-ruling { width: 100%; --sp: 28px; }
+  .paper-live .p-ruling.lined { background: repeating-linear-gradient(180deg, transparent 0 calc(var(--sp) - 1px), #151515 calc(var(--sp) - 1px) var(--sp)); }
+  .paper-live .p-ruling.grid { background: linear-gradient(90deg, transparent calc(var(--sp) - 1px), #151515 calc(var(--sp) - 1px)) 0 0 / var(--sp) var(--sp), linear-gradient(180deg, transparent calc(var(--sp) - 1px), #151515 calc(var(--sp) - 1px)) 0 0 / var(--sp) var(--sp); }
+  .paper-live .p-ruling.dotted { background: radial-gradient(circle, #151515 1.3px, transparent 1.8px) calc(var(--sp) / 2) calc(var(--sp) / 2) / var(--sp) var(--sp); }
+  .paper-live canvas { width: 100%; height: auto; display: block; image-rendering: auto; }
   @media (max-width: 799px) { .demo { grid-template-columns: 1fr; } .paper-live { width: min(320px, 100%); margin: 0 auto; } }
 
   /* from the phone / from Claude */
@@ -270,6 +282,8 @@
           <button type="button" data-kind="note" aria-pressed="true">Recado</button>
           <button type="button" data-kind="list" aria-pressed="false">Lista</button>
           <button type="button" data-kind="label" aria-pressed="false">Etiqueta</button>
+          <button type="button" data-kind="notebook" aria-pressed="false">Caderno</button>
+          <button type="button" data-kind="photo" aria-pressed="false">Foto</button>
         </div>
         <div data-for="note">
           <label>Para <input id="d-to" value="Ana" maxlength="40"></label>
@@ -287,6 +301,21 @@ Banana</textarea></label>
         <div data-for="label" hidden>
           <label>Texto grande <input id="d-big" value="Feijão" maxlength="24"></label>
           <label>Detalhe <input id="d-detail" value="Congelado hoje" maxlength="60"></label>
+        </div>
+        <div data-for="notebook" hidden>
+          <label>Título <input id="d-ntitle" value="Ideias" maxlength="40"></label>
+          <label>Estilo
+            <select id="d-style"><option value="lined">Pautado</option><option value="grid">Quadriculado</option><option value="dotted" selected>Pontilhado</option></select>
+          </label>
+          <label>Linhas: <output id="d-lines-out">8</output> <input id="d-lines" type="range" min="4" max="24" value="8"></label>
+          <label>Espaço entre linhas
+            <select id="d-spacing"><option value="6">Estreito (6 mm)</option><option value="7" selected>Médio (7 mm)</option><option value="9">Largo (9 mm)</option></select>
+          </label>
+          <label class="row"><input id="d-date" type="checkbox" checked> Data no topo</label>
+        </div>
+        <div data-for="photo" hidden>
+          <label>Foto <input id="d-photo" type="file" accept="image/*"></label>
+          <p class="hint">A foto fica só no seu navegador: o pontilhado (Floyd–Steinberg) roda aqui mesmo, como no Prelo.</p>
         </div>
         <p class="hint">No Prelo, o botão Imprimir fica logo abaixo da prévia. Aqui, só a prévia.</p>
       </form>
@@ -430,13 +459,46 @@ Banana</textarea></label>
     } else if (kind === "list") {
       const items = v("d-items").split("\n").map((s) => s.trim()).filter(Boolean);
       html = `${v("d-title") ? `<p class="p-title">${esc(v("d-title"))}</p>` : ""}<ul class="p-items">${items.map((i) => `<li>${esc(i)}</li>`).join("")}</ul><p class="p-date">${esc(now())}</p>`;
-    } else {
+    } else if (kind === "label") {
       html = `<p class="p-big">${esc(v("d-big") || "…")}</p>${v("d-detail") ? `<p class="p-detail">${esc(v("d-detail"))}</p>` : ""}<p class="p-detail" style="font-family:var(--cond)">${new Date().toLocaleDateString("pt-BR")}</p>`;
+    } else if (kind === "notebook") {
+      const lines = Number(v("d-lines")); document.getElementById("d-lines-out").value = lines;
+      const sp = Number(v("d-spacing")) * 4; // 72 mm of paper = 288 px here, so 4 px per mm
+      const date = document.getElementById("d-date").checked ? `<p class="p-nbdate">${esc(new Date().toLocaleDateString("pt-BR", { weekday: "long", day: "numeric", month: "long", year: "numeric" }).replace(/^./, (c) => c.toUpperCase()))}</p>` : "";
+      html = `${date}${v("d-ntitle") ? `<p class="p-nbtitle">${esc(v("d-ntitle"))}</p>` : ""}<div class="p-ruling ${esc(v("d-style"))}" style="--sp:${sp}px;height:${lines * sp}px"></div>`;
+    } else {
+      paper.innerHTML = "";
+      paper.appendChild(ditherTo(photoSrc));
+      return;
     }
     paper.innerHTML = html;
   };
+  // the photo path: grayscale, a little brighter (thermal paper darkens), Floyd–Steinberg to pure black and white
+  const photoSrc = new Image();
+  photoSrc.src = "icon.png";
+  photoSrc.onload = () => { if (kind === "photo") render(); };
+  document.getElementById("d-photo").addEventListener("change", (e) => {
+    const f = e.target.files && e.target.files[0]; if (!f) return;
+    const url = URL.createObjectURL(f); photoSrc.onload = () => { URL.revokeObjectURL(url); render(); feed(); }; photoSrc.src = url;
+  });
+  function ditherTo(img) {
+    const w = 288, h = Math.max(1, Math.min(420, Math.round(img.naturalHeight * w / (img.naturalWidth || 1))));
+    const c = document.createElement("canvas"); c.width = w; c.height = h;
+    const ctx = c.getContext("2d"); ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, w, h); ctx.drawImage(img, 0, 0, w, h);
+    const d = ctx.getImageData(0, 0, w, h), px = d.data, g = new Float32Array(w * h);
+    for (let i = 0; i < w * h; i++) { const l = (0.299 * px[i * 4] + 0.587 * px[i * 4 + 1] + 0.114 * px[i * 4 + 2]) / 255; g[i] = 255 * Math.pow(l, 0.75); }
+    for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+      const i = y * w + x, old = g[i], nw = old < 128 ? 0 : 255, err = old - nw; g[i] = nw;
+      if (x + 1 < w) g[i + 1] += err * 7 / 16;
+      if (y + 1 < h) { if (x > 0) g[i + w - 1] += err * 3 / 16; g[i + w] += err * 5 / 16; if (x + 1 < w) g[i + w + 1] += err / 16; }
+    }
+    for (let i = 0; i < w * h; i++) { const vv = g[i] < 128 ? 21 : 250; px[i * 4] = px[i * 4 + 1] = px[i * 4 + 2] = vv; px[i * 4 + 3] = 255; }
+    ctx.putImageData(d, 0, 0);
+    return c;
+  }
   const feed = () => { paper.classList.remove("feed"); void paper.offsetWidth; paper.classList.add("feed"); };
   demo.addEventListener("input", render);
+  demo.addEventListener("change", render);
   for (const b of demo.querySelectorAll(".seg button")) b.addEventListener("click", () => {
     kind = b.dataset.kind;
     for (const x of demo.querySelectorAll(".seg button")) x.setAttribute("aria-pressed", x === b);
