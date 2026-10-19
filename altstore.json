@@ -4,5 +4,25 @@
   "subtitle": "A impressora térmica da casa",
   "website": "https://preloprinter.github.io",
   "tintColor": "d7281e",
-  "apps": []
+  "apps": [
+    {
+      "name": "Prelo",
+      "bundleIdentifier": "br.com.brutom.prelo.mobile",
+      "developerName": "Bruno Tomassetti Couto",
+      "subtitle": "A impressora térmica da casa",
+      "localizedDescription": "Recados, listas, etiquetas, o jornal do dia e o repórter IA, no hub de casa.",
+      "iconURL": "https://preloprinter.github.io/img/icon-512.png",
+      "tintColor": "d7281e",
+      "versions": [
+        {
+          "version": "0.25.1",
+          "date": "2026-10-19",
+          "size": 3178064,
+          "downloadURL": "https://github.com/PreloPrinter/preloprinter.github.io/releases/download/v0.25.1/Prelo_0.25.1_ios.ipa",
+          "localizedDescription": "## [0.25.1](https://github.com/PreloPrinter/prelo/compare/v0.25.0...v0.25.1) (2026-10-19)\n\n### Correções\n\n* **desktop:** o AltServer entra no pacote por ditto depois do build do Tauri (o copiador de recursos não leva um .app inteiro) e o selo externo é refeito ([3aad87a](https://github.com/PreloPrinter/prelo/commit/3aad87a3425b0e3eec2c0aa802aa9fe19fd3df78))",
+          "minOSVersion": "15.0"
+        }
+      ]
+    }
+  ]
 }
