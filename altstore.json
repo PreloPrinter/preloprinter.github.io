@@ -15,6 +15,14 @@
       "tintColor": "d7281e",
       "versions": [
         {
+          "version": "0.25.3",
+          "date": "2026-10-19",
+          "size": 3178928,
+          "downloadURL": "https://github.com/PreloPrinter/preloprinter.github.io/releases/download/v0.25.3/Prelo_0.25.3_ios.ipa",
+          "localizedDescription": "## [0.25.3](https://github.com/PreloPrinter/prelo/compare/v0.25.2...v0.25.3) (2026-10-19)\n\n### Correções\n\n* **web:** a tela de escolha de hub só aparece no celular — o app do Mac também é Tauri e ficava preso nela; submenu AltServer no menu da barra (Iniciar/Parar, abrir junto com o Prelo, mostrar), atualizador interno dele desligado, fecha junto com o Prelo; a build baixa o AltServer oficial de novo quando muda ([694e777](https://github.com/PreloPrinter/prelo/commit/694e7770994715b3250340ee3b61daa13277409b))",
+          "minOSVersion": "15.0"
+        },
+        {
           "version": "0.25.2",
           "date": "2026-10-19",
           "size": 3178109,
