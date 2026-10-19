@@ -637,7 +637,7 @@ Banana</textarea></label>
     PT.set(ver, ver.textContent); EN[ver.textContent] = ver.textContent.replace(/^versão/, "version");
     box.innerHTML = list.map((r, i) => `
       <article class="release glass${i === 0 ? " latest" : ""}">
-        <header><h3>Prelo ${esc(r.tag_name.replace(/^v/, ""))} ${i === 0 ? '<span class="badge">${LANG.value === "en" ? "latest" : "atual"}</span>' : ""}</h3><time datetime="${r.published_at}">${fmtDate(r.published_at)}</time></header>
+        <header><h3>Prelo ${esc(r.tag_name.replace(/^v/, ""))} ${i === 0 ? '<span class="badge">' + (LANG.value === "en" ? "latest" : "atual") + '</span>' : ""}</h3><time datetime="${r.published_at}">${fmtDate(r.published_at)}</time></header>
         ${r.body ? `<div class="notes">${notesHtml(r.body)}</div>` : ""}
         <div class="assets">${r.assets.filter((a) => a.name.endsWith(".dmg")).map((a) => `<a href="${a.browser_download_url}">⬇ ${esc(a.name)} · ${(a.size / 1048576).toFixed(0)} MB</a>`).join("")}</div>
       </article>`).join("");
