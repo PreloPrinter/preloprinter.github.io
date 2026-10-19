@@ -166,6 +166,8 @@
   .release time { font: 500 12px/1 var(--cond); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
   .release .notes { margin: 12px 0 14px; padding-left: 14px; border-left: 3px solid var(--accent); color: var(--muted); font-size: 15px; display: grid; gap: 4px; }
   .release .notes strong { color: var(--ink); font: 600 11px/1 var(--cond); letter-spacing: .14em; text-transform: uppercase; margin-top: 6px; }
+  .release .notes b { color: var(--ink); }
+  .release .notes a { color: var(--accent); }
   .release .assets { display: flex; flex-wrap: wrap; gap: 8px; }
   .release .assets a { font: 500 13px/1 var(--cond); letter-spacing: .06em; text-decoration: none; padding: 10px 14px; border-radius: 999px; border: 1px solid var(--glass-border); min-height: 40px; display: inline-flex; align-items: center; gap: 8px; }
   .release .assets a:hover { background: rgba(255,255,255,.08); }
@@ -440,9 +442,16 @@ Banana</textarea></label>
   // --- versions: the public releases of this repository; the download button points at the newest .dmg
   const API = "https://api.github.com/repos/PreloPrinter/preloprinter.github.io/releases";
   const fmtDate = (iso) => new Date(iso).toLocaleDateString("pt-BR", { day: "numeric", month: "long", year: "numeric" });
+  // markdown-lite for the notes: **bold**, *italic*, `code`, [links](url); the commit link at the end is dropped
+  const mdInline = (l) => esc(l)
+    .replace(/\s*\(\[[0-9a-f]+\]\([^)]*\)\)\s*$/, "")
+    .replace(/`([^`]+)`/g, "<code>$1</code>")
+    .replace(/\*\*([^*]+)\*\*/g, "<b>$1</b>")
+    .replace(/(^|[^*])\*([^*\n]+)\*/g, "$1<i>$2</i>")
+    .replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noreferrer">$1</a>');
   const notesHtml = (md) => (md || "").split("\n").map((l) => l.trim()).filter((l) => l && !l.startsWith("## ")).map((l) => l.startsWith("### ")
     ? `<strong>${esc(l.slice(4))}</strong>`
-    : `<span>${esc(l.replace(/^[*-]\s+/, "").replace(/\s*\(\[[0-9a-f]+\]\([^)]*\)\)\s*$/, ""))}</span>`).join("");
+    : `<span>${mdInline(l.replace(/^[*-]\s+/, ""))}</span>`).join("");
   fetch(API).then((r) => r.json()).then((releases) => {
     const list = releases.filter((r) => !r.draft && !r.prerelease);
     const box = document.getElementById("releases");
