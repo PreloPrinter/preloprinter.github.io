@@ -115,6 +115,7 @@
   /* live demo: write and see the paper */
   .demo { display: grid; grid-template-columns: 1fr 320px; gap: 28px; padding: 24px; align-items: start; }
   .demo form, .demo [data-for] { display: grid; gap: 14px; }
+  .demo [data-for][hidden] { display: none; }
   .demo label { display: grid; gap: 6px; font: 600 15px/1.2 var(--serif); }
   .demo input, .demo textarea { width: 100%; min-height: 44px; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--glass-border); background: rgba(255,255,255,.05); color: var(--ink); font: 16px/1.4 var(--serif); }
   .demo textarea { resize: vertical; min-height: 96px; }
