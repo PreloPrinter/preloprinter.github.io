@@ -88,8 +88,9 @@
   .hero-paper img { animation: feed 1.2s var(--ease) both; }
   @keyframes feed { from { transform: translateY(-40px); opacity: 0; } to { transform: none; opacity: 1; } }
 
-  section { padding: 56px 0; }
-  .features { display: grid; gap: 14px; grid-template-columns: repeat(3, 1fr); }
+  section { padding: 56px 0; scroll-margin-top: 84px; } /* anchors land below the sticky menu */
+  @media (max-width: 599px) { section { padding: 40px 0; } }
+  .features { display: grid; gap: 16px; grid-template-columns: repeat(3, 1fr); }
   .feature { padding: 22px; display: flex; flex-direction: column; gap: 10px; transition: transform var(--t); }
   .feature:hover { transform: translateY(-3px); }
   .feature h3 { font-size: 20px; }
@@ -121,6 +122,7 @@
   .demo [data-for][hidden] { display: none; }
   .demo label { display: grid; gap: 6px; font: 600 15px/1.2 var(--serif); }
   .demo input, .demo textarea { width: 100%; min-height: 44px; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--glass-border); background: rgba(255,255,255,.05); color: var(--ink); font: 16px/1.4 var(--serif); }
+  .demo input:focus-visible, .demo textarea:focus-visible, .demo select:focus-visible { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(215,40,30,.35); }
   .demo textarea { resize: vertical; min-height: 96px; }
   .seg { display: inline-flex; gap: 2px; padding: 4px; border-radius: 999px; background: rgba(255,255,255,.06); margin-bottom: 4px; }
   .seg button { border: 0; background: transparent; color: var(--muted); padding: 0 14px; min-height: 36px; border-radius: 999px; font: 500 13px/1 var(--cond); letter-spacing: .08em; text-transform: uppercase; cursor: pointer; transition: color var(--t), background var(--t); }
@@ -153,7 +155,7 @@
   @media (max-width: 799px) { .demo { grid-template-columns: 1fr; } .paper-live { width: min(320px, 100%); margin: 0 auto; } }
 
   /* from the phone / from Claude */
-  .flows { display: grid; gap: 14px; grid-template-columns: 1fr 1fr 1fr; }
+  .flows { display: grid; gap: 16px; grid-template-columns: 1fr 1fr 1fr; }
   .flow { padding: 22px; }
   .flow h3 { font-size: 20px; margin-bottom: 10px; }
   .flow p { color: var(--muted); font-size: 15px; }
@@ -181,14 +183,14 @@
   .mac-window img { width: 100%; height: auto; display: block; animation: fadein .35s ease; }
   @keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
   nav .lang { border: 1px solid var(--glass-border); background: rgba(255,255,255,.06); color: var(--ink); min-height: 40px; padding: 0 12px; border-radius: 999px; font: 600 12px/1 var(--cond); letter-spacing: .12em; cursor: pointer; }
-  .how { display: grid; gap: 14px; grid-template-columns: 1fr 1fr; }
+  .how { display: grid; gap: 16px; grid-template-columns: 1fr 1fr; }
   .how article { padding: 24px; }
   .how h3 { font-size: 22px; margin-bottom: 8px; }
   .how ul { margin: 0; padding-left: 18px; color: var(--muted); }
   .how li { margin: 4px 0; }
   @media (max-width: 699px) { .how { grid-template-columns: 1fr; } }
 
-  .steps { counter-reset: s; display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+  .steps { counter-reset: s; display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
   .steps li { counter-increment: s; display: flex; gap: 16px; align-items: flex-start; padding: 16px 18px; }
   .steps li::before { content: counter(s); flex: none; font: 700 20px/44px var(--cond); text-align: center; width: 44px; height: 44px; border-radius: 50%; background: var(--accent); color: #fff; }
   .steps b { display: block; font-size: 17px; margin-bottom: 2px; }
@@ -196,6 +198,7 @@
   code { font: 14px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace; background: rgba(255,255,255,.08); padding: 2px 6px; border-radius: 6px; }
 
   .releases { display: grid; gap: 12px; }
+  @media (pointer: coarse) { .seg button, .shots [role="tab"], .gallery [role="tab"], .release .assets a, nav .lang { min-height: 44px; } }
   .release { padding: 20px 22px; }
   .release header { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 10px; }
   .release h3 { font-size: 22px; }
