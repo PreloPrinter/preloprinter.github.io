@@ -19,10 +19,10 @@
 
   :root {
     --bg-a: #121214; --bg-b: #1c1a19; --ink: #f4efe4; --muted: #a39d93; --paper: #faf8f3; --paper-ink: #151515;
-    --accent: #d7281e; --rule: rgba(255,255,255,.12); --rule-strong: rgba(255,255,255,.4);
+    --accent: #d7281e; --rule: rgba(255,255,255,.12);
     --glass: rgba(30,30,36,.55); --glass-strong: rgba(30,30,36,.85); --glass-border: rgba(255,255,255,.12);
     --serif: "Serifa", "Libre Baskerville", Georgia, serif; --cond: "Condensada", "Oswald", "Arial Narrow", sans-serif;
-    --radius: 22px; --radius-s: 14px; --t: .18s ease;
+    --radius: 22px; --radius-s: 14px; --t: .18s ease; --ease: cubic-bezier(.2,.8,.2,1);
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -39,25 +39,26 @@
   .muted { color: var(--muted); }
   .glass { background: var(--glass); -webkit-backdrop-filter: blur(18px) saturate(150%); backdrop-filter: blur(18px) saturate(150%); border: 1px solid var(--glass-border); border-radius: var(--radius); box-shadow: 0 20px 60px rgba(0,0,0,.35); }
   @media (prefers-reduced-transparency: reduce) { .glass { background: var(--glass-strong); backdrop-filter: none; -webkit-backdrop-filter: none; } }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
   /* masthead */
   .masthead { position: sticky; top: 0; z-index: 10; padding: 14px 16px; background: color-mix(in srgb, var(--bg-a) 78%, transparent); -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px); border-bottom: 1px solid var(--rule); }
   .masthead .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
   .wordmark { font: 400 34px/1 "Gotica", serif; text-decoration: none; display: flex; align-items: center; gap: 12px; }
   .wordmark img { width: 34px; height: 34px; border-radius: 9px; }
-  nav { display: flex; gap: 4px; }
+  nav { display: flex; gap: 4px; align-items: center; }
   nav a { font: 500 13px/1 var(--cond); letter-spacing: .1em; text-transform: uppercase; text-decoration: none; color: var(--muted); padding: 10px 12px; border-radius: 999px; min-height: 44px; display: inline-flex; align-items: center; transition: color var(--t), background var(--t); }
   nav a:hover, nav a:focus-visible { color: var(--ink); background: rgba(255,255,255,.06); }
-  @media (max-width: 599px) { nav a:not(.cta) { display: none; } }
+  @media (max-width: 699px) { nav a:not(.cta) { display: none; } }
 
-  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 22px; border-radius: 999px; border: 1px solid var(--glass-border); background: rgba(255,255,255,.06); color: var(--ink); text-decoration: none; font: 600 15px/1 var(--cond); letter-spacing: .08em; text-transform: uppercase; transition: transform var(--t), background var(--t), box-shadow var(--t); }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 22px; border-radius: 999px; border: 1px solid var(--glass-border); background: rgba(255,255,255,.06); color: var(--ink); text-decoration: none; font: 600 15px/1 var(--cond); letter-spacing: .08em; text-transform: uppercase; cursor: pointer; transition: transform var(--t), background var(--t), box-shadow var(--t); }
   .btn:hover { background: rgba(255,255,255,.1); transform: translateY(-1px); }
   .btn:active { transform: scale(.98); }
   .btn.primary { background: var(--accent); border-color: transparent; box-shadow: 0 10px 30px rgba(215,40,30,.35); }
   .btn.primary:hover { background: #e8342a; }
   .btn svg { width: 18px; height: 18px; }
   .btn small { font: 500 12px/1 var(--cond); letter-spacing: .06em; text-transform: none; opacity: .8; }
-  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  nav .btn { min-height: 40px; padding: 0 16px; }
 
   /* hero */
   .hero { padding: clamp(40px, 8vw, 96px) 0 40px; display: grid; gap: 40px; grid-template-columns: 1.1fr .9fr; align-items: center; }
@@ -68,32 +69,81 @@
   .version { font: 500 13px/1 var(--cond); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
   @media (max-width: 799px) { .hero { grid-template-columns: 1fr; } }
 
-  /* paper strips (real previews rendered by the Prelo engine) */
+  /* paper strips: real previews rendered by the Prelo engine, and the live demo */
   .strip { position: relative; background: var(--paper); color: var(--paper-ink); box-shadow: 0 30px 60px rgba(0,0,0,.45), 0 2px 0 rgba(255,255,255,.4) inset; }
   .strip::before, .strip::after { content: ""; position: absolute; left: 0; right: 0; height: 8px; background: linear-gradient(135deg, var(--paper) 50%, transparent 50%) 0 0/16px 8px, linear-gradient(225deg, var(--paper) 50%, transparent 50%) 8px 0/16px 8px; }
   .strip::before { top: -8px; transform: rotate(180deg); }
   .strip::after { bottom: -8px; }
-  .strip img { width: 100%; image-rendering: auto; }
-  .hero-paper { width: min(300px, 80%); margin: 0 auto; transform: rotate(-2deg); max-height: 540px; overflow: hidden; -webkit-mask-image: linear-gradient(180deg, #000 80%, transparent); mask-image: linear-gradient(180deg, #000 80%, transparent); }
-  .hero-paper img { animation: feed 1.2s cubic-bezier(.2,.8,.2,1) both; }
+  .strip img { width: 100%; }
+  .hero-paper { width: min(300px, 80%); margin: 0 auto; transform: rotate(-2deg); max-height: 560px; overflow: hidden; -webkit-mask-image: linear-gradient(180deg, #000 82%, transparent); mask-image: linear-gradient(180deg, #000 82%, transparent); }
+  .hero-paper img { animation: feed 1.2s var(--ease) both; }
   @keyframes feed { from { transform: translateY(-40px); opacity: 0; } to { transform: none; opacity: 1; } }
 
-  section { padding: 48px 0; }
+  section { padding: 56px 0; }
   .features { display: grid; gap: 14px; grid-template-columns: repeat(3, 1fr); }
-  .feature { padding: 22px; display: flex; flex-direction: column; gap: 10px; transition: transform var(--t), box-shadow var(--t); }
+  .feature { padding: 22px; display: flex; flex-direction: column; gap: 10px; transition: transform var(--t); }
   .feature:hover { transform: translateY(-3px); }
   .feature h3 { font-size: 20px; }
   .feature p { color: var(--muted); margin: 0; font-size: 15px; }
-  .feature .icon { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: rgba(255,255,255,.06); color: var(--ink); }
+  .feature .icon { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: rgba(255,255,255,.06); }
   .feature .icon svg { width: 22px; height: 22px; }
   @media (max-width: 799px) { .features { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 519px) { .features { grid-template-columns: 1fr; } }
 
-  .desk { display: grid; gap: 22px; grid-template-columns: repeat(4, 1fr); align-items: start; margin-top: 28px; }
-  .desk figure { margin: 0; }
-  .desk .strip { transform: rotate(var(--r, 0deg)); }
-  .desk figcaption { margin-top: 18px; text-align: center; font: 600 12px/1 var(--cond); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
-  @media (max-width: 799px) { .desk { grid-template-columns: 1fr 1fr; } }
+  /* gallery of pieces: tabs on the left, the paper on the right */
+  .gallery { display: grid; grid-template-columns: 300px 1fr; gap: 24px; align-items: start; margin-top: 28px; padding: 22px; }
+  .gallery [role="tablist"] { display: grid; gap: 4px; }
+  .gallery [role="tab"] { display: flex; align-items: center; gap: 12px; text-align: left; border: 0; background: transparent; color: var(--muted); padding: 10px 12px; min-height: 44px; border-radius: 12px; font: 500 14px/1 var(--cond); letter-spacing: .08em; text-transform: uppercase; cursor: pointer; transition: color var(--t), background var(--t); }
+  .gallery [role="tab"]:hover { color: var(--ink); background: rgba(255,255,255,.05); }
+  .gallery [role="tab"][aria-selected="true"] { color: var(--bg-a); background: var(--ink); }
+  .gallery [role="tab"] svg { width: 18px; height: 18px; flex: none; }
+  .gallery-view { display: grid; grid-template-columns: 1fr 300px; gap: 24px; align-items: start; }
+  .gallery-view h3 { font-size: 24px; margin-bottom: 8px; }
+  .gallery-view p { color: var(--muted); }
+  .gallery-view ul { color: var(--muted); padding-left: 18px; margin: 0; }
+  .gallery-view li { margin: 4px 0; }
+  .gallery-view .strip { max-height: 520px; overflow: hidden; -webkit-mask-image: linear-gradient(180deg, #000 85%, transparent); mask-image: linear-gradient(180deg, #000 85%, transparent); }
+  .gallery-view .strip img { animation: feed .7s var(--ease) both; }
+  @media (max-width: 899px) { .gallery { grid-template-columns: 1fr; } .gallery [role="tablist"] { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); } .gallery-view { grid-template-columns: 1fr; } .gallery-view .strip { width: min(300px, 100%); margin: 0 auto; } }
+
+  /* live demo: write and see the paper */
+  .demo { display: grid; grid-template-columns: 1fr 320px; gap: 28px; padding: 24px; align-items: start; }
+  .demo form { display: grid; gap: 12px; }
+  .demo label { display: grid; gap: 6px; font: 600 15px/1.2 var(--serif); }
+  .demo input, .demo textarea { width: 100%; min-height: 44px; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--glass-border); background: rgba(255,255,255,.05); color: var(--ink); font: 16px/1.4 var(--serif); }
+  .demo textarea { resize: vertical; min-height: 96px; }
+  .seg { display: inline-flex; gap: 2px; padding: 4px; border-radius: 999px; background: rgba(255,255,255,.06); margin-bottom: 4px; }
+  .seg button { border: 0; background: transparent; color: var(--muted); padding: 0 14px; min-height: 36px; border-radius: 999px; font: 500 13px/1 var(--cond); letter-spacing: .08em; text-transform: uppercase; cursor: pointer; transition: color var(--t), background var(--t); }
+  .seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg-a); }
+  .demo .hint { color: var(--muted); font-size: 14px; margin: 0; }
+  .paper-live { width: 100%; padding: 18px 16px 14px; min-height: 140px; }
+  .paper-live.feed { animation: feed .5s var(--ease); }
+  .paper-live .p-to { font: 600 15px/1.2 var(--cond); margin: 0 0 8px; }
+  .paper-live .p-body { font: 18px/1.5 var(--serif); margin: 0; white-space: pre-wrap; word-break: break-word; }
+  .paper-live .p-from { font: italic 16px/1.3 var(--serif); text-align: right; margin: 12px 0 0; }
+  .paper-live .p-date { font: 10px/1 var(--cond); text-align: center; margin-top: 14px; padding-top: 6px; border-top: 1px solid #151515; }
+  .paper-live .p-items { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  .paper-live .p-items li { display: flex; gap: 10px; align-items: baseline; font: 17px/1.3 var(--serif); }
+  .paper-live .p-items li::before { content: ""; width: 14px; height: 14px; border: 2px solid #151515; flex: none; transform: translateY(2px); }
+  .paper-live .p-title { font: 700 22px/1.1 var(--serif); margin: 0 0 4px; padding-bottom: 6px; border-bottom: 2px solid #151515; }
+  .paper-live .p-big { font: 700 clamp(40px, 9vw, 64px)/1 var(--cond); text-align: center; margin: 0 0 8px; letter-spacing: -.01em; word-break: break-word; }
+  .paper-live .p-detail { font: 17px/1.3 var(--serif); margin: 0; }
+  @media (max-width: 799px) { .demo { grid-template-columns: 1fr; } .paper-live { width: min(320px, 100%); margin: 0 auto; } }
+
+  /* from the phone / from Claude */
+  .flows { display: grid; gap: 14px; grid-template-columns: 1fr 1fr 1fr; }
+  .flow { padding: 22px; }
+  .flow h3 { font-size: 20px; margin-bottom: 10px; }
+  .flow p { color: var(--muted); font-size: 15px; }
+  .chat { display: grid; gap: 8px; margin-top: 10px; }
+  .bubble { padding: 10px 14px; border-radius: 16px; font-size: 14px; line-height: 1.4; max-width: 90%; }
+  .bubble.you { background: rgba(255,255,255,.1); justify-self: end; border-bottom-right-radius: 4px; }
+  .bubble.ai { background: rgba(215,40,30,.18); border: 1px solid rgba(215,40,30,.35); border-bottom-left-radius: 4px; }
+  .bubble b { font-family: var(--cond); letter-spacing: .06em; text-transform: uppercase; font-size: 11px; display: block; margin-bottom: 2px; opacity: .8; }
+  .share { display: grid; gap: 6px; margin-top: 10px; }
+  .share span { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 10px; background: rgba(255,255,255,.06); font: 500 13px/1 var(--cond); letter-spacing: .06em; text-transform: uppercase; }
+  .share span::before { content: "›"; color: var(--accent); font-weight: 700; }
+  @media (max-width: 799px) { .flows { grid-template-columns: 1fr; } }
 
   .how { display: grid; gap: 14px; grid-template-columns: 1fr 1fr; }
   .how article { padding: 24px; }
@@ -103,9 +153,9 @@
   @media (max-width: 699px) { .how { grid-template-columns: 1fr; } }
 
   .steps { counter-reset: s; display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
-  .steps li { counter-increment: s; display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: start; padding: 16px 18px; }
-  .steps li::before { content: counter(s); font: 700 20px/44px var(--cond); text-align: center; width: 44px; height: 44px; border-radius: 50%; background: var(--accent); color: #fff; }
-  .steps b { display: block; font-size: 17px; }
+  .steps li { counter-increment: s; display: flex; gap: 16px; align-items: flex-start; padding: 16px 18px; }
+  .steps li::before { content: counter(s); flex: none; font: 700 20px/44px var(--cond); text-align: center; width: 44px; height: 44px; border-radius: 50%; background: var(--accent); color: #fff; }
+  .steps b { display: block; font-size: 17px; margin-bottom: 2px; }
   .steps span { color: var(--muted); }
   code { font: 14px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace; background: rgba(255,255,255,.08); padding: 2px 6px; border-radius: 6px; }
 
@@ -134,11 +184,12 @@
   <div class="wrap">
     <a class="wordmark" href="#"><img src="icon.png" alt="" width="34" height="34">Prelo</a>
     <nav aria-label="Seções">
-      <a href="#recursos">Recursos</a>
-      <a href="#como">Como roda</a>
+      <a href="#pecas">Peças</a>
+      <a href="#experimente">Experimente</a>
+      <a href="#origens">De onde</a>
       <a href="#instalar">Instalar</a>
       <a href="#versoes">Versões</a>
-      <a class="cta btn primary" id="dl-top" href="https://github.com/PreloPrinter/preloprinter.github.io/releases/latest" style="min-height:40px;padding:0 16px">Baixar</a>
+      <a class="cta btn primary" id="dl-top" href="https://github.com/PreloPrinter/preloprinter.github.io/releases/latest">Baixar</a>
     </nav>
   </div>
 </header>
@@ -158,12 +209,12 @@
       </div>
     </div>
     <figure class="strip hero-paper" aria-label="Uma edição do jornal, como sai no papel">
-      <img src="img/newspaper.png" alt="Edição do jornal The Brutom Times impressa: tempo, manchete, mercado" width="576" height="1194" loading="eager">
+      <img src="img/newspaper.png" alt="Edição do jornal impressa: tempo, manchete, mercado" width="576" height="1219" loading="eager">
     </figure>
   </section>
 
-  <section id="recursos">
-    <p class="eyebrow">Recursos</p>
+  <section id="pecas">
+    <p class="eyebrow">O que ele imprime</p>
     <h2>Uma redação inteira em 80 mm de papel.</h2>
     <div class="features">
       <article class="feature glass">
@@ -179,24 +230,84 @@
         <h3>Etiquetas, QR e Wi-Fi</h3><p>Texto grande com a data para o pote do congelador, QR code com legenda, o Wi-Fi de visitas pronto para escanear.</p>
       </article>
       <article class="feature glass">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
-        <h3>AirPrint do iPhone</h3><p>O Prelo aparece como impressora no iPhone e no Mac: foto, PDF, página da web ou um texto do Notas saem no papel sem app nenhum.</p>
-      </article>
-      <article class="feature glass">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 17v4M17 19h4M5 3v4M3 5h4"/></svg></div>
-        <h3>O repórter IA</h3><p>Servidor MCP embutido: o Claude vê a prévia e imprime recados, listas e o jornal direto na conversa — sem gastar papel à toa.</p>
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
+        <h3>Fotos</h3><p>Fotos saem pontilhadas (Floyd–Steinberg), com margens cortadas e clareadas para não borrar o papel. Pela tela, pelo iPhone, pelo Claude.</p>
       </article>
       <article class="feature glass">
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></div>
-        <h3>Editor livre</h3><p>Monte a peça do seu jeito: texto, imagens, QR, formas. Prévia térmica de verdade antes de imprimir.</p>
+        <h3>Editor livre</h3><p>Monte a peça do seu jeito: texto, imagens, QR, formas, modelos salvos. Prévia térmica de verdade antes de imprimir.</p>
+      </article>
+      <article class="feature glass">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <h3>Fila e histórico</h3><p>A redação mostra o que está saindo, o que espera e o que já saiu — venha do app, do iPhone, do Claude ou da agenda.</p>
       </article>
     </div>
 
-    <div class="desk" aria-label="Exemplos impressos">
-      <figure><div class="strip" style="--r:-1.5deg"><img src="img/note.png" alt="Recado impresso" loading="lazy"></div><figcaption>Recado</figcaption></figure>
-      <figure><div class="strip" style="--r:1deg"><img src="img/list.png" alt="Lista do mercado impressa" loading="lazy"></div><figcaption>Lista</figcaption></figure>
-      <figure><div class="strip" style="--r:-.6deg"><img src="img/label.png" alt="Etiqueta impressa" loading="lazy"></div><figcaption>Etiqueta</figcaption></figure>
-      <figure><div class="strip" style="--r:1.4deg"><img src="img/qr.png" alt="QR code impresso" loading="lazy"></div><figcaption>QR code</figcaption></figure>
+    <div class="gallery glass" id="gallery">
+      <div role="tablist" aria-label="Exemplos impressos"></div>
+      <div class="gallery-view">
+        <div id="gallery-text"></div>
+        <div class="strip"><img id="gallery-img" src="img/note.png" alt="" width="576" height="263"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experimente">
+    <p class="eyebrow">Experimente</p>
+    <h2>Escreva e veja como sai.</h2>
+    <p class="muted">A prévia aqui é uma imitação em HTML da diagramação do Prelo — no app, ela é a imagem exata que vai para a impressora.</p>
+    <div class="demo glass">
+      <form id="demo" onsubmit="return false">
+        <div class="seg" role="group" aria-label="Tipo de peça">
+          <button type="button" data-kind="note" aria-pressed="true">Recado</button>
+          <button type="button" data-kind="list" aria-pressed="false">Lista</button>
+          <button type="button" data-kind="label" aria-pressed="false">Etiqueta</button>
+        </div>
+        <div data-for="note">
+          <label>Para <input id="d-to" value="Ana" maxlength="40"></label>
+          <label>Recado <textarea id="d-text" maxlength="400">Comprei pão, está na bancada. Volto às 18h.</textarea></label>
+          <label>De <input id="d-from" value="Bruno" maxlength="40"></label>
+        </div>
+        <div data-for="list" hidden>
+          <label>Título <input id="d-title" value="Mercado" maxlength="40"></label>
+          <label>Itens <span class="hint">um por linha</span><textarea id="d-items" maxlength="600">Café
+Ovos
+Leite
+Pão integral
+Banana</textarea></label>
+        </div>
+        <div data-for="label" hidden>
+          <label>Texto grande <input id="d-big" value="Feijão" maxlength="24"></label>
+          <label>Detalhe <input id="d-detail" value="Congelado hoje" maxlength="60"></label>
+        </div>
+        <p class="hint">No Prelo, o botão Imprimir fica logo abaixo da prévia. Aqui, só a prévia.</p>
+      </form>
+      <div class="strip paper-live" id="paper" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section id="origens">
+    <p class="eyebrow">De onde</p>
+    <h2>Da tela, do iPhone, do Claude.</h2>
+    <div class="flows">
+      <article class="flow glass">
+        <h3>Do app</h3>
+        <p>A interface roda no navegador do Mac, do iPhone ou de qualquer aparelho da casa. Na Tela de Início do iPhone ela abre em tela cheia, como um app.</p>
+        <div class="share"><span>Redação com a fila ao vivo</span><span>Peças com prévia do tamanho do papel</span><span>Editor livre e modelos salvos</span></div>
+      </article>
+      <article class="flow glass">
+        <h3>Do iPhone, pelo AirPrint</h3>
+        <p>O Prelo se anuncia como impressora na rede de casa. Qualquer app que imprime, imprime no Prelo: uma foto, um PDF, uma página, um texto do Notas.</p>
+        <div class="share"><span>Compartilhar</span><span>Imprimir</span><span>Impressora: Prelo</span></div>
+      </article>
+      <article class="flow glass">
+        <h3>Do Claude, pelo MCP</h3>
+        <p>O Prelo tem um servidor MCP embutido. Conectado ao Claude Code ou ao Claude Desktop, ele vira o repórter da casa.</p>
+        <div class="chat">
+          <div class="bubble you"><b>você</b>imprime a lista do mercado: café, ovos, leite e pão</div>
+          <div class="bubble ai"><b>Claude</b>Impresso (48 mm de papel). Quer que eu coloque na agenda de amanhã também?</div>
+        </div>
+      </article>
     </div>
   </section>
 
@@ -232,7 +343,7 @@
       <article class="glass">
         <h3>Aberto por construção</h3>
         <ul>
-          <li>API HTTP documentada: tudo que a tela faz, dá para fazer por script ou automação.</li>
+          <li>API HTTP: tudo que a tela faz, dá para fazer por script ou automação.</li>
           <li>Home Assistant de um lado (dados do jornal), MCP do outro (o Claude imprime).</li>
           <li>Rust + Tauri + React; licença MIT.</li>
         </ul>
@@ -244,11 +355,11 @@
     <p class="eyebrow">Instalar no Mac</p>
     <h2>Cinco passos, uma vez só.</h2>
     <ol class="steps">
-      <li class="glass"><b>Baixe o <code>.dmg</code></b><span>Botão acima (Apple Silicon). As versões anteriores ficam na lista abaixo.</span></li>
-      <li class="glass"><b>Arraste o Prelo para Aplicativos</b><span>Como qualquer app.</span></li>
-      <li class="glass"><b>Na primeira vez: botão direito → Abrir</b><span>O Prelo é assinado pelo próprio projeto, não pela Apple, então o macOS pede essa confirmação uma vez.</span></li>
-      <li class="glass"><b>Permita “Rede Local”</b><span>É assim que ele fala com a impressora e aparece no iPhone como AirPrint.</span></li>
-      <li class="glass"><b>Ajustes → endereço da impressora</b><span>Ou “Procurar impressora na rede”. Pronto: imprima um recado.</span></li>
+      <li class="glass"><div><b>Baixe o <code>.dmg</code></b><span>Botão acima (Apple Silicon). As versões anteriores ficam na lista abaixo.</span></div></li>
+      <li class="glass"><div><b>Arraste o Prelo para Aplicativos</b><span>Como qualquer app.</span></div></li>
+      <li class="glass"><div><b>Na primeira vez: botão direito → Abrir</b><span>O Prelo é assinado pelo próprio projeto, não pela Apple, então o macOS pede essa confirmação uma vez.</span></div></li>
+      <li class="glass"><div><b>Permita “Rede Local”</b><span>É assim que ele fala com a impressora e aparece no iPhone como AirPrint.</span></div></li>
+      <li class="glass"><div><b>Ajustes → endereço da impressora</b><span>Ou “Procurar impressora na rede”. Pronto: imprima um recado.</span></div></li>
     </ol>
   </section>
 
@@ -268,16 +379,70 @@
 </footer>
 
 <script>
-  // Versions come from the public releases of this repository; the download button points at the newest .dmg.
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+  // --- gallery: every piece, with the paper the engine really produced
+  const PIECES = [
+    { id: "newspaper", name: "Jornal", img: "img/newspaper.png", h: 1219, title: "A edição do dia", text: "Diagramada em 576 pontos como um jornal de verdade: cabeçalho gótico, o tempo agora e por hora, a manchete com QR para ler no celular, mercado, almanaque e o que a casa pede. Sai sozinha no horário marcado ou quando você mandar.", items: ["Clima da sua cidade (Open-Meteo)", "Tarefas, agenda e sensores do Home Assistant", "Notícias dos feeds RSS que você escolher", "Seções na ordem que preferir"] },
+    { id: "note", name: "Recado", img: "img/note.png", h: 263, title: "Recado", text: "Para quem chega depois de você. Nome de quem recebe, o texto, a assinatura e a hora em que foi impresso.", items: ["Quebra de linha automática", "Data e hora no rodapé", "Também pelo Claude: “deixa um recado para a Ana…”"] },
+    { id: "list", name: "Lista", img: "img/list.png", h: 348, title: "Lista", text: "Caixinhas para marcar com caneta. A lista do mercado, as tarefas do fim de semana, o que levar na viagem.", items: ["Um item por linha", "Título opcional", "O Home Assistant pode alimentar a lista do jornal"] },
+    { id: "notebook", name: "Caderno", img: "img/notebook.png", h: 583, title: "Caderno", text: "Páginas pautadas, quadriculadas ou pontilhadas, com o número de linhas e o espaçamento que você quiser. Boas para uma nota rápida ou para a criançada desenhar.", items: ["Pautado, quadriculado ou pontilhado", "Espaço estreito, médio ou largo", "Data no topo, se quiser"] },
+    { id: "label", name: "Etiqueta", img: "img/label.png", h: 231, title: "Etiqueta", text: "Texto grande para ler de longe, um detalhe e a data de hoje. Pote do congelador, caixa da garagem, prateleira.", items: ["Texto bem grande em condensada", "QR opcional (link ou texto)", "Data de hoje com um clique"] },
+    { id: "qr", name: "QR code", img: "img/qr.png", h: 521, title: "QR code", text: "Um link, um texto, um código: com título e legenda. Cole na geladeira, no equipamento, no presente.", items: ["Tamanho ajustado ao papel", "Lido por qualquer câmera de celular"] },
+    { id: "wifi", name: "Wi-Fi", img: "img/wifi.png", h: 531, title: "Wi-Fi de visitas", text: "O QR que conecta o celular da visita sem digitar nada, com o nome da rede e a senha escritos embaixo. A senha não fica salva: só vai para o papel.", items: ["WPA, WEP ou rede aberta", "Padrão lido pelo iPhone e pelo Android"] },
+    { id: "photo", name: "Foto", img: "img/photo.png", h: 576, title: "Foto", text: "Qualquer imagem vira meio-tom pontilhado (Floyd–Steinberg), com as margens brancas cortadas e o preto limitado para não borrar o papel térmico.", items: ["Pela tela, pelo iPhone (AirPrint) ou pelo Claude", "Texto nítido e foto pontilhada na mesma peça, no Editor"] },
+  ];
+  const ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>';
+  const tablist = document.querySelector("#gallery [role=tablist]");
+  const show = (p) => {
+    for (const b of tablist.children) b.setAttribute("aria-selected", b.dataset.id === p.id);
+    document.getElementById("gallery-text").innerHTML = `<h3>${esc(p.title)}</h3><p>${esc(p.text)}</p><ul>${p.items.map((i) => `<li>${esc(i)}</li>`).join("")}</ul>`;
+    const img = document.getElementById("gallery-img");
+    img.style.animation = "none"; void img.offsetWidth; img.style.animation = "";
+    img.src = p.img; img.height = p.h; img.alt = `${p.name} impresso`;
+  };
+  for (const p of PIECES) {
+    const b = document.createElement("button");
+    b.type = "button"; b.setAttribute("role", "tab"); b.dataset.id = p.id; b.innerHTML = `${ICON}${esc(p.name)}`;
+    b.addEventListener("click", () => show(p));
+    tablist.appendChild(b);
+  }
+  show(PIECES[1]);
+
+  // --- live demo: an HTML imitation of the engine's layout for three pieces
+  const demo = document.getElementById("demo");
+  const paper = document.getElementById("paper");
+  let kind = "note";
+  const now = () => new Date().toLocaleString("pt-BR", { weekday: "long", day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit" }).replace(",", ",").replace(" ", " ");
+  const v = (id) => document.getElementById(id).value;
+  const render = () => {
+    let html = "";
+    if (kind === "note") {
+      html = `<p class="p-to">Para ${esc(v("d-to") || "…")}</p><p class="p-body">${esc(v("d-text"))}</p>${v("d-from") ? `<p class="p-from">— ${esc(v("d-from"))}</p>` : ""}<p class="p-date">${esc(now())}</p>`;
+    } else if (kind === "list") {
+      const items = v("d-items").split("\n").map((s) => s.trim()).filter(Boolean);
+      html = `${v("d-title") ? `<p class="p-title">${esc(v("d-title"))}</p>` : ""}<ul class="p-items">${items.map((i) => `<li>${esc(i)}</li>`).join("")}</ul><p class="p-date">${esc(now())}</p>`;
+    } else {
+      html = `<p class="p-big">${esc(v("d-big") || "…")}</p>${v("d-detail") ? `<p class="p-detail">${esc(v("d-detail"))}</p>` : ""}<p class="p-detail" style="font-family:var(--cond)">${new Date().toLocaleDateString("pt-BR")}</p>`;
+    }
+    paper.innerHTML = html;
+  };
+  const feed = () => { paper.classList.remove("feed"); void paper.offsetWidth; paper.classList.add("feed"); };
+  demo.addEventListener("input", render);
+  for (const b of demo.querySelectorAll(".seg button")) b.addEventListener("click", () => {
+    kind = b.dataset.kind;
+    for (const x of demo.querySelectorAll(".seg button")) x.setAttribute("aria-pressed", x === b);
+    for (const d of demo.querySelectorAll("[data-for]")) d.hidden = d.dataset.for !== kind;
+    render(); feed();
+  });
+  render();
+
+  // --- versions: the public releases of this repository; the download button points at the newest .dmg
   const API = "https://api.github.com/repos/PreloPrinter/preloprinter.github.io/releases";
   const fmtDate = (iso) => new Date(iso).toLocaleDateString("pt-BR", { day: "numeric", month: "long", year: "numeric" });
-  const notesHtml = (md) => {
-    const lines = (md || "").split("\n").map((l) => l.trim()).filter((l) => l && !l.startsWith("## "));
-    return lines.map((l) => l.startsWith("### ")
-      ? `<strong>${esc(l.slice(4))}</strong>`
-      : `<span>${esc(l.replace(/^[*-]\s+/, "").replace(/\s*\(\[[0-9a-f]+\]\([^)]*\)\)\s*$/, ""))}</span>`).join("");
-  };
-  const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const notesHtml = (md) => (md || "").split("\n").map((l) => l.trim()).filter((l) => l && !l.startsWith("## ")).map((l) => l.startsWith("### ")
+    ? `<strong>${esc(l.slice(4))}</strong>`
+    : `<span>${esc(l.replace(/^[*-]\s+/, "").replace(/\s*\(\[[0-9a-f]+\]\([^)]*\)\)\s*$/, ""))}</span>`).join("");
   fetch(API).then((r) => r.json()).then((releases) => {
     const list = releases.filter((r) => !r.draft && !r.prerelease);
     const box = document.getElementById("releases");
