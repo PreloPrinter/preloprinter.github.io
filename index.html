@@ -122,8 +122,8 @@
   .msg.bot { justify-self: start; background: rgba(255,255,255,.07); border-bottom-left-radius: 6px; }
   .msg b { font-weight: 700; }
   .tool-line { display: inline-flex; align-items: center; gap: 8px; font: 500 13px/1 var(--cond); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding: 4px 2px; animation: rise .3s var(--ease) both; }
-  .tool-line svg { width: 15px; height: 15px; color: #f2b632; animation: spin-flat 1.1s linear infinite; }
-  @keyframes spin-flat { to { transform: rotate(360deg); } }
+  .tool-line svg { width: 15px; height: 15px; color: #f2b632; transform-origin: 20% 85%; animation: scribble-pen .7s ease-in-out infinite; }
+  @keyframes scribble-pen { 0%, 100% { transform: rotate(-12deg) translate(0, 0); } 30% { transform: rotate(6deg) translate(1.5px, -1px); } 60% { transform: rotate(-18deg) translate(2.5px, 0); } 80% { transform: rotate(2deg) translate(1px, 1px); } }
   .caret { display: inline-block; width: 2px; height: 1em; background: currentColor; vertical-align: -2px; margin-left: 2px; animation: caret 1s steps(2) infinite; }
   @keyframes caret { 50% { opacity: 0; } }
   .approval { display: grid; grid-template-columns: 1fr auto; gap: 14px; align-items: center; padding: 14px 16px; border-radius: 16px; border: 1px solid var(--glass-border); background: rgba(255,255,255,.04); animation: rise .35s var(--ease) both; }
@@ -153,6 +153,24 @@
   .mini-steps span { color: var(--muted); font-size: 15px; }
   .muted.small { font-size: 14px; margin-top: 14px; }
   .source-url { font: 13px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--muted); word-break: break-all; }
+
+  /* the phone: a drawn iPhone with the real screens, and the "find the hub" moment that plays itself */
+  .phone-section { display: grid; grid-template-columns: minmax(280px, 380px) 1fr; gap: 40px; align-items: start; margin-top: 28px; }
+  @media (max-width: 799px) { .phone-section { grid-template-columns: 1fr; justify-items: center; } }
+  .iphone { position: relative; width: min(340px, 80vw); aspect-ratio: 393 / 852; border-radius: 48px; background: #0b0b0d; border: 10px solid #1a1a1e; box-shadow: 0 30px 80px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.08); overflow: hidden; }
+  .iphone::before { content: ""; position: absolute; left: 50%; top: 10px; width: 36%; height: 28px; transform: translateX(-50%); background: #000; border-radius: 20px; z-index: 3; }
+  .iphone .screen { position: absolute; inset: 0; opacity: 0; transition: opacity .35s var(--ease), transform .35s var(--ease); transform: scale(1.02); }
+  .iphone .screen img { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .iphone .screen.on { opacity: 1; transform: none; }
+  .iphone .tap { position: absolute; width: 44px; height: 44px; border-radius: 50%; border: 2px solid #fff; left: 50%; top: 31%; transform: translate(-50%, -50%) scale(.4); opacity: 0; pointer-events: none; z-index: 4; }
+  .iphone .tap.go { animation: tap .9s var(--ease) both; }
+  @keyframes tap { 0% { opacity: 0; transform: translate(-50%, -50%) scale(.4); } 30% { opacity: .9; transform: translate(-50%, -50%) scale(1); } 100% { opacity: 0; transform: translate(-50%, -50%) scale(1.6); } }
+  .phone-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 0; justify-content: center; }
+  .phone-tabs button { border: 1px solid var(--glass-border); background: rgba(255,255,255,.05); color: var(--muted); padding: 0 14px; min-height: 40px; border-radius: 999px; font: 500 13px/1 var(--cond); letter-spacing: .08em; text-transform: uppercase; cursor: pointer; transition: color var(--t), background var(--t); }
+  .phone-tabs button[aria-selected="true"] { background: var(--ink); color: var(--bg-a); }
+  .phone-copy h2 { margin-top: 0; }
+  .phone-copy .reporter-points { margin-top: 22px; }
+  .phone-copy .iphone-steps { margin-top: 26px; }
 
   section { padding: 56px 0; scroll-margin-top: 84px; } /* anchors land below the sticky menu */
   @media (max-width: 599px) { section { padding: 40px 0; } }
@@ -297,6 +315,7 @@
       <a href="#experimente">Experimente</a>
       <a href="#origens">De onde</a>
       <a href="#app">O app</a>
+      <a href="#celular">Celular</a>
       <a href="#como">Como roda</a>
       <a href="#instalar">Instalar</a>
       <a href="#versoes">Versões</a>
@@ -380,7 +399,7 @@
             <rect x="3" y="-1.2" width="4" height="1.5" fill="#2a2a30"/><rect x="3" y="-.3" width="4" height=".5" fill="#d7281e"/><rect x="2" y=".3" width="6" height=".7" fill="#2a2a30"/>
             <rect x="5.8" y="-2.2" width="3.2" height="1.3" fill="#f4efe4"/><text x="7.4" y="-1.2" text-anchor="middle" font-size=".85" font-family="Oswald, Arial Narrow, sans-serif" font-weight="700" fill="#1a1a1e" style="shape-rendering:auto">PRESS</text>
             <g transform="rotate(10 10.5 5)"><rect x="9.6" y="3.4" width="2.2" height="2.8" fill="#fff"/><g fill="#1a1a1e"><rect x="9.9" y="4" width="1.6" height=".3"/><rect x="9.9" y="4.7" width="1.6" height=".3"/><rect x="9.9" y="5.4" width="1" height=".3"/></g></g>
-            <g class="pencil"><rect x="0" y="4.4" width=".8" height="3.4" fill="#f2b632"/><rect x="0" y="4.4" width=".8" height=".6" fill="#d7281e"/><rect x="0" y="7.8" width=".8" height=".5" fill="#ffe0b3"/></g>
+            <g class="pencil"><rect x="0" y="4.4" width=".8" height="3.4" fill="#f2b632"/><rect x="0" y="4.4" width=".8" height=".6" fill="#d7281e"/><polygon points="0,7.8 0.8,7.8 0.4,8.7" fill="#e9c9a0" style="shape-rendering:auto"/><polygon points="0.26,8.38 0.54,8.38 0.4,8.7" fill="#1a1a1e" style="shape-rendering:auto"/></g>
           </svg>
           </button>
           <span class="pet-hint">Cutuque o Claudinho</span>
@@ -494,6 +513,48 @@ Banana</textarea></label>
     </div>
   </section>
 
+  <section id="celular">
+    <div class="phone-section">
+      <div>
+        <div class="iphone" id="iphone" aria-label="O app do Prelo no iPhone">
+          <div class="screen on" data-screen="picker"><img src="img/phone/pt-BR-picker.jpg" alt="Tela de escolha do hub no iPhone" width="1179" height="2556" loading="lazy"></div>
+          <div class="screen" data-screen="newsroom"><img src="img/phone/pt-BR-newsroom.jpg" alt="Redação no iPhone" width="1179" height="2556" loading="lazy"></div>
+          <div class="screen" data-screen="reporter"><img src="img/phone/pt-BR-reporter.jpg" alt="Repórter IA no iPhone" width="1179" height="2556" loading="lazy"></div>
+          <div class="screen" data-screen="phone"><img src="img/phone/pt-BR-phone.jpg" alt="Instruções de instalação no iPhone" width="1179" height="2556" loading="lazy"></div>
+          <span class="tap" id="phone-tap" aria-hidden="true"></span>
+        </div>
+        <div class="phone-tabs" role="tablist" aria-label="Telas do celular" id="phone-tabs">
+          <button type="button" role="tab" data-screen="picker" aria-selected="true">Achar o hub</button>
+          <button type="button" role="tab" data-screen="newsroom">Redação</button>
+          <button type="button" role="tab" data-screen="reporter">Repórter IA</button>
+          <button type="button" role="tab" data-screen="phone">Instalar</button>
+        </div>
+      </div>
+      <div class="phone-copy">
+        <p class="eyebrow">No celular</p>
+        <h2>A mesma redação, <em>no bolso.</em></h2>
+        <p class="muted">O app do iPhone é a mesma interface do Mac apontada para um hub da casa: ele acha o Mac pela rede, entra com um QR e usa a impressora e o Repórter IA de lá. Sem loja: chega pela AltStore.</p>
+        <ul class="reporter-points">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8a6 6 0 0 1 0 8.4M7.8 16.2a6 6 0 0 1 0-8.4M19.1 4.9a10 10 0 0 1 0 14.2M4.9 19.1a10 10 0 0 1 0-14.2"/></svg><div><b>Acha o hub sozinho</b>O Mac com a impressora se anuncia na rede; o app lista, você toca e entra. Vários Macs? Escolha um.</div></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM18 18h3v3h-3z"/></svg><div><b>Entra com um QR</b>Se o hub pede chave, o Mac mostra um QR de pareamento com endereço e chave. A câmera do app lê e pronto.</div></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.6L18 9.4l-4.2 1.8L12 16l-1.8-4.8L6 9.4l4.2-1.8z"/></svg><div><b>Tudo que o Mac faz</b>Recados, listas, etiquetas, o jornal e a conversa com o repórter, com o Claudinho junto. A aprovação de impressão continua na sua mão.</div></li>
+        </ul>
+        <div class="iphone-steps">
+          <p class="eyebrow">Instalar</p>
+          <ol class="mini-steps">
+            <li><b>AltStore Classic pela AltStore PAL</b><span>No iOS 27 (Brasil, UE e Japão) tudo acontece no aparelho: Ajustes do Classic → Set up Remote AltServer.</span></li>
+            <li><b>Adicione a fonte do Prelo</b><span>Sources → “+” e cole a URL abaixo, ou toque no botão pelo iPhone.</span></li>
+            <li><b>Instale o Prelo</b><span>As versões novas chegam pela própria AltStore. Sem iOS 27, o AltServer que vem dentro do Prelo no Mac faz o mesmo papel.</span></li>
+          </ol>
+          <div class="ctas">
+            <a class="btn primary" href="altstore://source?url=https://preloprinter.github.io/altstore.json">Adicionar à AltStore</a>
+            <code class="source-url">https://preloprinter.github.io/altstore.json</code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="como">
     <p class="eyebrow">Como roda</p>
     <h2>Um servidor pequeno em Rust; cada app é só a casca.</h2>
@@ -544,24 +605,7 @@ Banana</textarea></label>
       <li class="glass"><div><b>Permita “Rede Local”</b><span>É assim que ele fala com a impressora e aparece no iPhone como AirPrint.</span></div></li>
       <li class="glass"><div><b>Ajustes → endereço da impressora</b><span>Ou “Procurar impressora na rede”. Pronto: imprima um recado.</span></div></li>
     </ol>
-    <div class="iphone glass" id="iphone">
-      <div>
-        <p class="eyebrow">No iPhone</p>
-        <h3>O app do celular, sem computador.</h3>
-        <p class="muted">O Prelo do iPhone usa o Mac como hub. Ele chega pela AltStore, assinado com o seu Apple ID; no iOS 27 (Brasil, União Europeia e Japão) tudo acontece no próprio aparelho.</p>
-        <ol class="mini-steps">
-          <li><b>AltStore Classic pela AltStore PAL</b><span>A PAL é a loja alternativa; o Classic, instalado por ela, é o que aceita apps de fora.</span></li>
-          <li><b>Ajustes do Classic → Set up Remote AltServer</b><span>Siga o guia. Ele pareia o aparelho sozinho e instala um perfil de VPN local; precisa de Wi-Fi.</span></li>
-          <li><b>Adicione a fonte do Prelo</b><span>Sources → “+” e cole a URL abaixo, ou toque no botão pelo iPhone.</span></li>
-          <li><b>Instale o Prelo</b><span>As versões novas chegam pela própria AltStore; a renovação semanal é automática.</span></li>
-        </ol>
-        <div class="ctas">
-          <a class="btn primary" href="altstore://source?url=https://preloprinter.github.io/altstore.json">Adicionar à AltStore</a>
-          <code class="source-url">https://preloprinter.github.io/altstore.json</code>
-        </div>
-        <p class="muted small">Sem iOS 27? O AltServer no Mac faz o mesmo papel (menu do Prelo → AltServer). E a interface do Prelo no Safari, com “Adicionar à Tela de Início”, funciona em qualquer iPhone sem instalar nada.</p>
-      </div>
-    </div>
+    <p class="muted" style="margin-top:18px">No iPhone? O app do celular e os passos da AltStore estão em <a href="#celular">Celular</a>.</p>
   </section>
 
   <section id="versoes">
@@ -599,6 +643,7 @@ Banana</textarea></label>
     if (window.renderDemo) window.renderDemo();
     if (window.renderShot) window.renderShot();
     if (window.renderReporterDemo) window.renderReporterDemo();
+    if (window.renderPhone) window.renderPhone();
     if (window.renderReleases) window.renderReleases();
   };
   fetch("i18n-en.json").then((r) => r.json()).then((d) => { EN = d; applyLang(); }).catch(() => applyLang());
@@ -663,6 +708,21 @@ Banana</textarea></label>
     window.renderReporterDemo = () => { if (started) play(); };
     new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting) && !started) { started = true; play(); } }, { threshold: 0.35 }).observe(chat);
   })();
+
+  // --- the phone: screens by language; "find the hub" plays a tap on the found hub and opens the newsroom
+  (() => {
+    const phone = document.getElementById("iphone"), tabs = document.getElementById("phone-tabs"), tap = document.getElementById("phone-tap");
+    let current = "picker", timer = 0, played = false;
+    const setScreen = (id) => { current = id; for (const sc of phone.querySelectorAll(".screen")) sc.classList.toggle("on", sc.dataset.screen === id); for (const b of tabs.children) b.setAttribute("aria-selected", b.dataset.screen === id); };
+    const play = () => { // the found hub gets tapped, the newsroom comes up, then it rests on the picker again
+      clearTimeout(timer); setScreen("picker"); tap.classList.remove("go");
+      timer = setTimeout(() => { tap.classList.add("go"); timer = setTimeout(() => { setScreen("newsroom"); tap.classList.remove("go"); }, 700); }, 1600);
+    };
+    tabs.addEventListener("click", (e) => { const b = e.target.closest("[data-screen]"); if (!b) return; clearTimeout(timer); tap.classList.remove("go"); if (b.dataset.screen === "picker") play(); else setScreen(b.dataset.screen); });
+    phone.addEventListener("click", () => { if (current === "picker") play(); });
+    window.renderPhone = () => { const l = LANG.value === "en" ? "en" : "pt-BR"; for (const img of phone.querySelectorAll("img")) img.src = `img/phone/${l}-${img.parentElement.dataset.screen}.jpg`; };
+    new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting) && !played) { played = true; play(); } }, { threshold: 0.4 }).observe(phone);
+  })();
   // --- app screenshots
   (() => {
     const tabs = document.getElementById("shot-tabs"), img = document.getElementById("shot-img");
@@ -710,6 +770,17 @@ Banana</textarea></label>
     { id: "wifi", name: "Wi-Fi", img: "img/wifi.png", h: 531, title: "Wi-Fi de visitas", text: "O QR que conecta o celular da visita sem digitar nada, com o nome da rede e a senha escritos embaixo. A senha não fica salva: só vai para o papel.", items: ["WPA, WEP ou rede aberta", "Padrão lido pelo iPhone e pelo Android"] },
     { id: "photo", name: "Foto", img: "img/photo.png", h: 576, title: "Foto", text: "Qualquer imagem vira meio-tom pontilhado (Floyd–Steinberg), com as margens brancas cortadas e o preto limitado para não borrar o papel térmico.", items: ["Pela tela, pelo iPhone (AirPrint) ou pelo Claude", "Texto nítido e foto pontilhada na mesma peça, no Editor"] },
   ];
+  const PIECES_EN = {
+    newspaper: { name: "Newspaper", title: "The day's edition", text: "Laid out in 576 dots like a real newspaper: blackletter masthead, the weather now and by the hour, the headline with a QR to read on the phone, market, almanac and what the house asks for. Comes out by itself at the set time, or whenever you say.", items: ["Weather for your city (Open-Meteo)", "Tasks, calendar and sensors from Home Assistant", "News from the RSS feeds you pick", "Sections in the order you prefer"], h: 1407 },
+    note: { name: "Note", title: "Note", text: "For whoever gets home after you. Who it is for, the text, the signature and the time it was printed.", items: ["Line breaks kept", "Title and signature optional", "Also from Claude, by MCP"], h: 263 },
+    list: { name: "List", title: "List", text: "Boxes to tick with a pen. The grocery list, the weekend chores, what to pack for the trip.", items: ["One item per line", "Title optional", "Long lists keep going on the roll"], h: 304 },
+    notebook: { name: "Notebook", title: "Notebook", text: "Lined, grid or dotted pages, with the number of lines and the spacing you want. Good for a note by hand, a sketch, a shopping tally.", items: ["Today's date on top", "6 to 9 mm spacing", "Up to 80 lines"], h: 919 },
+    label: { name: "Label", title: "Label", text: "Big text to read from afar, a detail and today's date. The freezer jar, the garage box, the shelf.", items: ["Optional small QR", "Date on or off", "Fits a jar lid"], h: 213 },
+    qr: { name: "QR code", title: "QR code", text: "A link, a text, a code: with a title and a caption. Stick it on the fridge, on the appliance, on the gift.", items: ["Sized to the paper", "Caption below", "Anything a phone camera reads"], h: 521 },
+    wifi: { name: "Wi-Fi", title: "Guest Wi-Fi", text: "The QR that connects a guest's phone without typing, with the network name and the password written below.", items: ["WPA, WEP or open", "Password printed, not kept", "Works with iPhone and Android cameras"], h: 557 },
+    photo: { name: "Photo", title: "Photo", text: "Any image becomes a dotted halftone (Floyd–Steinberg), with white margins trimmed and the black limited so the paper does not smear.", items: ["From the screen, the iPhone or Claude", "Fit to the roll's width", "Crisp or photo mode"], h: 576 },
+  };
+  const pieceFor = (p) => LANG.value === "en" && PIECES_EN[p.id] ? { ...p, ...PIECES_EN[p.id], img: `img/en/${p.id}.png` } : p;
   const ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>';
   const tablist = document.querySelector("#gallery [role=tablist]");
   const show = (p) => {
@@ -719,13 +790,20 @@ Banana</textarea></label>
     img.style.animation = "none"; void img.offsetWidth; img.style.animation = "";
     img.src = p.img; img.height = p.h; img.alt = `${p.name} impresso`;
   };
+  let currentPiece = PIECES[1];
   for (const p of PIECES) {
     const b = document.createElement("button");
     b.type = "button"; b.setAttribute("role", "tab"); b.dataset.id = p.id; b.innerHTML = `${ICON}${esc(p.name)}`;
-    b.addEventListener("click", () => show(p));
+    b.addEventListener("click", () => { currentPiece = p; show(pieceFor(p)); });
     tablist.appendChild(b);
   }
-  show(PIECES[1]);
+  window.renderGallery = () => {
+    for (const b of tablist.children) { const p = pieceFor(PIECES.find((x) => x.id === b.dataset.id)); b.innerHTML = `${ICON}${esc(p.name)}`; }
+    show(pieceFor(currentPiece));
+    const hero = document.querySelector(".hero-paper img");
+    if (hero) { const en = LANG.value === "en"; hero.src = en ? "img/en/newspaper.png" : "img/newspaper.png"; hero.height = en ? 1407 : 1219; }
+  };
+  show(pieceFor(currentPiece));
 
   // --- live demo: an HTML imitation of the engine's layout for three pieces
   const demo = document.getElementById("demo");
