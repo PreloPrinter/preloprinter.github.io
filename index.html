@@ -52,9 +52,12 @@
   .masthead .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
   .wordmark { font: 400 34px/1 "Gotica", serif; text-decoration: none; display: flex; align-items: center; gap: 12px; }
   .wordmark img { width: 34px; height: 34px; border-radius: 9px; }
-  nav { display: flex; gap: 4px; align-items: center; }
-  nav a { font: 500 13px/1 var(--cond); letter-spacing: .1em; text-transform: uppercase; text-decoration: none; color: var(--muted); padding: 10px 12px; border-radius: 999px; min-height: 44px; display: inline-flex; align-items: center; transition: color var(--t), background var(--t); }
+  nav { display: flex; gap: 4px; align-items: center; position: relative; }
+  nav a { position: relative; z-index: 1; font: 500 13px/1 var(--cond); letter-spacing: .1em; text-transform: uppercase; text-decoration: none; color: var(--muted); padding: 10px 12px; border-radius: 999px; min-height: 44px; display: inline-flex; align-items: center; transition: color var(--t), background var(--t); }
   nav a:hover, nav a:focus-visible { color: var(--ink); background: rgba(255,255,255,.06); }
+  nav a.on { color: var(--bg-a); background: transparent; }
+  nav .pill { position: absolute; top: 2px; height: 40px; border-radius: 999px; background: var(--ink); opacity: 0; transition: left .32s cubic-bezier(.2,.8,.2,1), width .32s cubic-bezier(.2,.8,.2,1), opacity var(--t); }
+  nav .pill.show { opacity: 1; }
   @media (max-width: 699px) { nav a:not(.cta) { display: none; } }
 
   .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 22px; border-radius: 999px; border: 1px solid var(--glass-border); background: rgba(255,255,255,.06); color: var(--ink); text-decoration: none; font: 600 15px/1 var(--cond); letter-spacing: .08em; text-transform: uppercase; cursor: pointer; transition: transform var(--t), background var(--t), box-shadow var(--t); }
@@ -205,6 +208,7 @@
   <div class="wrap">
     <a class="wordmark" href="#"><img src="icon.png" alt="" width="34" height="34">Prelo</a>
     <nav aria-label="Seções">
+      <span class="pill" aria-hidden="true"></span>
       <a href="#pecas">Peças</a>
       <a href="#experimente">Experimente</a>
       <a href="#origens">De onde</a>
@@ -417,6 +421,27 @@ Banana</textarea></label>
 </footer>
 
 <script>
+  // the pill in the top menu slides to the section on screen (and stays put on hover/click)
+  (() => {
+    const nav = document.querySelector(".masthead nav"), pill = nav.querySelector(".pill");
+    const links = [...nav.querySelectorAll("a[href^='#']:not(.cta)")];
+    const move = (a) => {
+      if (!a) { pill.classList.remove("show"); links.forEach((l) => l.classList.remove("on")); return; }
+      pill.style.left = `${a.offsetLeft}px`; pill.style.width = `${a.offsetWidth}px`; pill.classList.add("show");
+      links.forEach((l) => l.classList.toggle("on", l === a));
+    };
+    const byId = (id) => links.find((l) => l.getAttribute("href") === `#${id}`);
+    const sections = links.map((l) => document.querySelector(l.getAttribute("href"))).filter(Boolean);
+    const seen = new Map();
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) seen.set(e.target.id, e.intersectionRatio);
+      let best = null, ratio = 0.08;
+      for (const s of sections) { const r = seen.get(s.id) || 0; if (r > ratio) { best = s; ratio = r; } }
+      move(best ? byId(best.id) : null);
+    }, { rootMargin: "-20% 0px -55% 0px", threshold: [0, 0.1, 0.25, 0.5, 0.75, 1] });
+    sections.forEach((s) => io.observe(s));
+    window.addEventListener("resize", () => move(links.find((l) => l.classList.contains("on"))));
+  })();
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
   // --- gallery: every piece, with the paper the engine really produced
