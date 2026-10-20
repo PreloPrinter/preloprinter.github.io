@@ -15,6 +15,14 @@
       "tintColor": "d7281e",
       "versions": [
         {
+          "version": "0.32.0",
+          "date": "2026-10-20",
+          "size": 3260593,
+          "downloadURL": "https://github.com/PreloPrinter/preloprinter.github.io/releases/download/v0.32.0/Prelo_0.32.0_ios.ipa",
+          "localizedDescription": "## [0.32.0](https://github.com/PreloPrinter/prelo/compare/v0.31.2...v0.32.0) (2026-10-20)\n\n### Novidades\n\n* **phone:** o AltServer passa a ficar desligado por padrão e os controles dele saem do menu da barra para a tela \"No celular\" (ligar, desligar, mostrar, abrir junto com o Prelo, instalar); a detecção de \"rodando\" ficou mais confiável; o MCP e o repórter também podem ver e controlar o AltServer ([57cb13c](https://github.com/PreloPrinter/prelo/commit/57cb13c3ef48be66c4c22793421f77bed6a3e8b0))",
+          "minOSVersion": "15.0"
+        },
+        {
           "version": "0.31.2",
           "date": "2026-10-20",
           "size": 3260021,
