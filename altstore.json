@@ -1,7 +1,7 @@
 {
   "name": "Prelo",
   "identifier": "io.github.preloprinter",
-  "subtitle": "A impressora t\u00e9rmica da casa",
+  "subtitle": "A impressora térmica da casa",
   "website": "https://preloprinter.github.io",
   "tintColor": "d7281e",
   "apps": [
@@ -9,17 +9,25 @@
       "name": "Prelo",
       "bundleIdentifier": "br.com.brutom.prelo.mobile",
       "developerName": "Bruno Tomassetti Couto",
-      "subtitle": "A impressora t\u00e9rmica da casa",
-      "localizedDescription": "Recados, listas, etiquetas, o jornal do dia e o rep\u00f3rter IA, no hub de casa.",
+      "subtitle": "A impressora térmica da casa",
+      "localizedDescription": "Recados, listas, etiquetas, o jornal do dia e o repórter IA, no hub de casa.",
       "iconURL": "https://preloprinter.github.io/img/icon-512.png",
       "tintColor": "d7281e",
       "versions": [
+        {
+          "version": "0.31.0",
+          "date": "2026-10-20",
+          "size": 3260047,
+          "downloadURL": "https://github.com/PreloPrinter/preloprinter.github.io/releases/download/v0.31.0/Prelo_0.31.0_ios.ipa",
+          "localizedDescription": "## [0.31.0](https://github.com/PreloPrinter/prelo/compare/v0.30.0...v0.31.0) (2026-10-20)\n\n### Novidades\n\n* **shopping:** quantidade com − e + em cada item (no 1, o − vira lixeira), o campo de adicionar com o enter dentro da caixa como no chat, e o texto indo sozinho para a IA quando é um pedido (\"o que vai num bolo de cenoura\") e ficando na hora quando são itens simples (\"leite e pão, 2 kg de banana\") ([d941fac](https://github.com/PreloPrinter/prelo/commit/d941fac0349bcf7b6e7dbb1b8cbb1034f7474453))\n* **web:** a cidade nos Ajustes virou uma busca; escolher o lugar já guarda as coordenadas e o fuso horário do clima, sem campos de latitude e longitude ([6439870](https://github.com/PreloPrinter/prelo/commit/6439870ef9fef8ba347610d919263261ceefc1be))",
+          "minOSVersion": "15.0"
+        },
         {
           "version": "0.30.0",
           "date": "2026-10-20",
           "size": 3259379,
           "downloadURL": "https://github.com/PreloPrinter/preloprinter.github.io/releases/download/v0.30.0/Prelo_0.30.0_ios.ipa",
-          "localizedDescription": "Lista de compras: uma lista s\u00f3 para a casa, que o celular, o Mac e o Rep\u00f3rter IA veem igual. Entra por texto (a quantidade e a se\u00e7\u00e3o do mercado saem sozinhas), por foto da lousa ou de um produto, por c\u00f3digo de barras, por busca de produtos ou pedindo ideias \u00e0 IA (\"bolo de cenoura\" vira os ingredientes). Marque no mercado, guarde os itens de sempre e imprima por corredor, com caixinhas. No celular, Compras entra na barra de baixo no lugar do Editor; pelo chat, o rep\u00f3rter tamb\u00e9m anota na lista.",
+          "localizedDescription": "Lista de compras: uma lista só para a casa, que o celular, o Mac e o Repórter IA veem igual. Entra por texto (a quantidade e a seção do mercado saem sozinhas), por foto da lousa ou de um produto, por código de barras, por busca de produtos ou pedindo ideias à IA (\"bolo de cenoura\" vira os ingredientes). Marque no mercado, guarde os itens de sempre e imprima por corredor, com caixinhas. No celular, Compras entra na barra de baixo no lugar do Editor; pelo chat, o repórter também anota na lista.",
           "minOSVersion": "15.0"
         },
         {
@@ -27,7 +35,7 @@
           "date": "2026-10-20",
           "size": 3250820,
           "downloadURL": "https://github.com/PreloPrinter/preloprinter.github.io/releases/download/v0.29.2/Prelo_0.29.2_ios.ipa",
-          "localizedDescription": "## [0.29.2](https://github.com/PreloPrinter/prelo/compare/v0.29.1...v0.29.2) (2026-10-20)\n\n### Corre\u00e7\u00f5es\n\n* **desktop:** o aviso \"Acesso recusado em /api/update\" era o pr\u00f3prio app do Mac \u2014 a consulta de atualiza\u00e7\u00e3o do menu ia sem token e, com uma chave de acesso cadastrada, o hub recusava a cada 10 min; agora usa o token interno. O aviso passa a dizer de qual endere\u00e7o veio a chamada recusada ([e0622dc](https://github.com/PreloPrinter/prelo/commit/e0622dc00523a8ec528a7b186d68eb8d15cedd42))",
+          "localizedDescription": "## [0.29.2](https://github.com/PreloPrinter/prelo/compare/v0.29.1...v0.29.2) (2026-10-20)\n\n### Correções\n\n* **desktop:** o aviso \"Acesso recusado em /api/update\" era o próprio app do Mac — a consulta de atualização do menu ia sem token e, com uma chave de acesso cadastrada, o hub recusava a cada 10 min; agora usa o token interno. O aviso passa a dizer de qual endereço veio a chamada recusada ([e0622dc](https://github.com/PreloPrinter/prelo/commit/e0622dc00523a8ec528a7b186d68eb8d15cedd42))",
           "minOSVersion": "15.0"
         },
         {
@@ -35,7 +43,7 @@
           "date": "2026-10-20",
           "size": 3250797,
           "downloadURL": "https://github.com/PreloPrinter/preloprinter.github.io/releases/download/v0.29.1/Prelo_0.29.1_ios.ipa",
-          "localizedDescription": "## [0.29.1](https://github.com/PreloPrinter/prelo/compare/v0.29.0...v0.29.1) (2026-10-20)\n\n### Corre\u00e7\u00f5es\n\n* **web:** d\u00e1 para digitar nos Ajustes de novo \u2014 o campo de texto era recriado a cada tecla (componente definido dentro da p\u00e1gina) e perdia o foco; agora \u00e9 um componente fixo ([66afeb8](https://github.com/PreloPrinter/prelo/commit/66afeb86b8c50d834cc18459ac5445c57de5d633))",
+          "localizedDescription": "## [0.29.1](https://github.com/PreloPrinter/prelo/compare/v0.29.0...v0.29.1) (2026-10-20)\n\n### Correções\n\n* **web:** dá para digitar nos Ajustes de novo — o campo de texto era recriado a cada tecla (componente definido dentro da página) e perdia o foco; agora é um componente fixo ([66afeb8](https://github.com/PreloPrinter/prelo/commit/66afeb86b8c50d834cc18459ac5445c57de5d633))",
           "minOSVersion": "15.0"
         },
         {
@@ -43,7 +51,7 @@
           "date": "2026-10-20",
           "size": 3250627,
           "downloadURL": "https://github.com/PreloPrinter/preloprinter.github.io/releases/download/v0.29.0/Prelo_0.29.0_ios.ipa",
-          "localizedDescription": "## [0.29.0](https://github.com/PreloPrinter/prelo/compare/v0.28.6...v0.29.0) (2026-10-20)\n\n### Novidades\n\n* **hubs:** outros hubs da rede aparecem na tela Hubs (o servidor procura _prelo._tcp por Bonjour) com troca num toque; instala\u00e7\u00e3o limpa sem dados pessoais nos padr\u00f5es (cidade, coordenadas, nome, impressora e t\u00edtulo neutros), jornal sem clima at\u00e9 ter cidade e sauda\u00e7\u00e3o sem nome ([73c7c93](https://github.com/PreloPrinter/prelo/commit/73c7c931fe8bc2df25b2ae400b70c823804ac2e5))",
+          "localizedDescription": "## [0.29.0](https://github.com/PreloPrinter/prelo/compare/v0.28.6...v0.29.0) (2026-10-20)\n\n### Novidades\n\n* **hubs:** outros hubs da rede aparecem na tela Hubs (o servidor procura _prelo._tcp por Bonjour) com troca num toque; instalação limpa sem dados pessoais nos padrões (cidade, coordenadas, nome, impressora e título neutros), jornal sem clima até ter cidade e saudação sem nome ([73c7c93](https://github.com/PreloPrinter/prelo/commit/73c7c931fe8bc2df25b2ae400b70c823804ac2e5))",
           "minOSVersion": "15.0"
         },
         {
@@ -51,7 +59,7 @@
           "date": "2026-10-20",
           "size": 3250410,
           "downloadURL": "https://github.com/PreloPrinter/preloprinter.github.io/releases/download/v0.28.6/Prelo_0.28.6_ios.ipa",
-          "localizedDescription": "## [0.28.6](https://github.com/PreloPrinter/prelo/compare/v0.28.5...v0.28.6) (2026-10-20)\n\n### Corre\u00e7\u00f5es\n\n* **web:** em modo remoto (celular ou outro Mac), os Ajustes dizem de qual hub s\u00e3o e a se\u00e7\u00e3o de atualiza\u00e7\u00e3o vira \"Atualiza\u00e7\u00e3o do hub\", com a nota de que o app do aparelho atualiza pela AltStore ([83887db](https://github.com/PreloPrinter/prelo/commit/83887db759365fdff4905bf5ebe5625e44c5db47))\n* **web:** o modal de atualiza\u00e7\u00e3o espera a instala\u00e7\u00e3o come\u00e7ar (10 s), mostra \"reabrindo\" enquanto o hub reinicia e \"no ar\" quando volta, recarregando a tela \u2014 vale para o Mac e para quem acompanha de outro aparelho ([f1a1adc](https://github.com/PreloPrinter/prelo/commit/f1a1adc297396ca5e79d9bfe0a2d13a1b72f5b3d))",
+          "localizedDescription": "## [0.28.6](https://github.com/PreloPrinter/prelo/compare/v0.28.5...v0.28.6) (2026-10-20)\n\n### Correções\n\n* **web:** em modo remoto (celular ou outro Mac), os Ajustes dizem de qual hub são e a seção de atualização vira \"Atualização do hub\", com a nota de que o app do aparelho atualiza pela AltStore ([83887db](https://github.com/PreloPrinter/prelo/commit/83887db759365fdff4905bf5ebe5625e44c5db47))\n* **web:** o modal de atualização espera a instalação começar (10 s), mostra \"reabrindo\" enquanto o hub reinicia e \"no ar\" quando volta, recarregando a tela — vale para o Mac e para quem acompanha de outro aparelho ([f1a1adc](https://github.com/PreloPrinter/prelo/commit/f1a1adc297396ca5e79d9bfe0a2d13a1b72f5b3d))",
           "minOSVersion": "15.0"
         },
         {
@@ -59,7 +67,7 @@
           "date": "2026-10-20",
           "size": 3249985,
           "downloadURL": "https://github.com/PreloPrinter/preloprinter.github.io/releases/download/v0.28.5/Prelo_0.28.5_ios.ipa",
-          "localizedDescription": "## [0.28.5](https://github.com/PreloPrinter/prelo/compare/v0.28.4...v0.28.5) (2026-10-20)\n\n### Corre\u00e7\u00f5es\n\n* **build:** o job de Mac do CI volta a rodar em toda vers\u00e3o e usa os mesmos scripts da build local (Prelo.app com AltServer, .ipa e publica\u00e7\u00e3o no site com altstore.json); o passo do .dmg tem limite de 4 min e cai para um .dmg simples se o Finder travar ([75703ed](https://github.com/PreloPrinter/prelo/commit/75703ed3aef7d3b195f4caaf4812efdb724f1e30))",
+          "localizedDescription": "## [0.28.5](https://github.com/PreloPrinter/prelo/compare/v0.28.4...v0.28.5) (2026-10-20)\n\n### Correções\n\n* **build:** o job de Mac do CI volta a rodar em toda versão e usa os mesmos scripts da build local (Prelo.app com AltServer, .ipa e publicação no site com altstore.json); o passo do .dmg tem limite de 4 min e cai para um .dmg simples se o Finder travar ([75703ed](https://github.com/PreloPrinter/prelo/commit/75703ed3aef7d3b195f4caaf4812efdb724f1e30))",
           "minOSVersion": "15.0"
         },
         {
@@ -67,7 +75,7 @@
           "date": "2026-10-19",
           "size": 3246698,
           "downloadURL": "https://github.com/PreloPrinter/preloprinter.github.io/releases/download/v0.28.0/Prelo_0.28.0_ios.ipa",
-          "localizedDescription": "## [0.28.0](https://github.com/PreloPrinter/prelo/compare/v0.27.0...v0.28.0) (2026-10-19)\n\n### Novidades\n\n* **web:** celular \u2014 cabe\u00e7alho compacto (data numa linha, n\u00ba primeiro), barra de baixo na ordem do desktop (Reda\u00e7\u00e3o, Rep\u00f3rter, Editor, Caderno, Mais), cart\u00f5es com respiro menor, bot\u00f5es da edi\u00e7\u00e3o empilhados; Hubs e No celular com ritmo \u00fanico de se\u00e7\u00f5es, dois caminhos iguais e QRs em tiles; hub que passa a pedir chave manda o app de volta ao seletor com aviso ([64cc00c](https://github.com/PreloPrinter/prelo/commit/64cc00c3cc507ae693de6c8952ae393c9317f2e5))",
+          "localizedDescription": "## [0.28.0](https://github.com/PreloPrinter/prelo/compare/v0.27.0...v0.28.0) (2026-10-19)\n\n### Novidades\n\n* **web:** celular — cabeçalho compacto (data numa linha, nº primeiro), barra de baixo na ordem do desktop (Redação, Repórter, Editor, Caderno, Mais), cartões com respiro menor, botões da edição empilhados; Hubs e No celular com ritmo único de seções, dois caminhos iguais e QRs em tiles; hub que passa a pedir chave manda o app de volta ao seletor com aviso ([64cc00c](https://github.com/PreloPrinter/prelo/commit/64cc00c3cc507ae693de6c8952ae393c9317f2e5))",
           "minOSVersion": "15.0"
         },
         {
@@ -75,7 +83,7 @@
           "date": "2026-10-19",
           "size": 3293313,
           "downloadURL": "https://github.com/PreloPrinter/preloprinter.github.io/releases/download/v0.27.0/Prelo_0.27.0_ios.ipa",
-          "localizedDescription": "## [0.28.0](https://github.com/PreloPrinter/prelo/compare/v0.27.0...v0.28.0) (2026-10-19)\n\n### Novidades\n\n* **web:** celular \u2014 cabe\u00e7alho compacto (data numa linha, n\u00ba primeiro), barra de baixo na ordem do desktop (Reda\u00e7\u00e3o, Rep\u00f3rter, Editor, Caderno, Mais), cart\u00f5es com respiro menor, bot\u00f5es da edi\u00e7\u00e3o empilhados; Hubs e No celular com ritmo \u00fanico de se\u00e7\u00f5es, dois caminhos iguais e QRs em tiles; hub que passa a pedir chave manda o app de volta ao seletor com aviso ([64cc00c](https://github.com/PreloPrinter/prelo/commit/64cc00c3cc507ae693de6c8952ae393c9317f2e5))",
+          "localizedDescription": "## [0.28.0](https://github.com/PreloPrinter/prelo/compare/v0.27.0...v0.28.0) (2026-10-19)\n\n### Novidades\n\n* **web:** celular — cabeçalho compacto (data numa linha, nº primeiro), barra de baixo na ordem do desktop (Redação, Repórter, Editor, Caderno, Mais), cartões com respiro menor, botões da edição empilhados; Hubs e No celular com ritmo único de seções, dois caminhos iguais e QRs em tiles; hub que passa a pedir chave manda o app de volta ao seletor com aviso ([64cc00c](https://github.com/PreloPrinter/prelo/commit/64cc00c3cc507ae693de6c8952ae393c9317f2e5))",
           "minOSVersion": "15.0"
         },
         {
@@ -83,7 +91,7 @@
           "date": "2026-10-19",
           "size": 3179392,
           "downloadURL": "https://github.com/PreloPrinter/preloprinter.github.io/releases/download/v0.26.0/Prelo_0.26.0_ios.ipa",
-          "localizedDescription": "## [0.26.0](https://github.com/PreloPrinter/prelo/compare/v0.25.3...v0.26.0) (2026-10-19)\n\n### Novidades\n\n* **web:** tela \"No celular\" no menu da engrenagem \u2014 passos da AltStore PAL \u2192 Classic \u2192 Remote AltServer \u2192 fonte do Prelo, QR da fonte e QR deste hub para o Safari, com o AltServer do Mac como reserva ([8e877dc](https://github.com/PreloPrinter/prelo/commit/8e877dcdb174ecafb300b5c706dc6755d484d7d8))",
+          "localizedDescription": "## [0.26.0](https://github.com/PreloPrinter/prelo/compare/v0.25.3...v0.26.0) (2026-10-19)\n\n### Novidades\n\n* **web:** tela \"No celular\" no menu da engrenagem — passos da AltStore PAL → Classic → Remote AltServer → fonte do Prelo, QR da fonte e QR deste hub para o Safari, com o AltServer do Mac como reserva ([8e877dc](https://github.com/PreloPrinter/prelo/commit/8e877dcdb174ecafb300b5c706dc6755d484d7d8))",
           "minOSVersion": "15.0"
         },
         {
@@ -91,7 +99,7 @@
           "date": "2026-10-19",
           "size": 3178928,
           "downloadURL": "https://github.com/PreloPrinter/preloprinter.github.io/releases/download/v0.25.3/Prelo_0.25.3_ios.ipa",
-          "localizedDescription": "## [0.25.3](https://github.com/PreloPrinter/prelo/compare/v0.25.2...v0.25.3) (2026-10-19)\n\n### Corre\u00e7\u00f5es\n\n* **web:** a tela de escolha de hub s\u00f3 aparece no celular \u2014 o app do Mac tamb\u00e9m \u00e9 Tauri e ficava preso nela; submenu AltServer no menu da barra (Iniciar/Parar, abrir junto com o Prelo, mostrar), atualizador interno dele desligado, fecha junto com o Prelo; a build baixa o AltServer oficial de novo quando muda ([694e777](https://github.com/PreloPrinter/prelo/commit/694e7770994715b3250340ee3b61daa13277409b))",
+          "localizedDescription": "## [0.25.3](https://github.com/PreloPrinter/prelo/compare/v0.25.2...v0.25.3) (2026-10-19)\n\n### Correções\n\n* **web:** a tela de escolha de hub só aparece no celular — o app do Mac também é Tauri e ficava preso nela; submenu AltServer no menu da barra (Iniciar/Parar, abrir junto com o Prelo, mostrar), atualizador interno dele desligado, fecha junto com o Prelo; a build baixa o AltServer oficial de novo quando muda ([694e777](https://github.com/PreloPrinter/prelo/commit/694e7770994715b3250340ee3b61daa13277409b))",
           "minOSVersion": "15.0"
         },
         {
@@ -99,7 +107,7 @@
           "date": "2026-10-19",
           "size": 3178109,
           "downloadURL": "https://github.com/PreloPrinter/preloprinter.github.io/releases/download/v0.25.2/Prelo_0.25.2_ios.ipa",
-          "localizedDescription": "## [0.25.2](https://github.com/PreloPrinter/prelo/compare/v0.25.1...v0.25.2) (2026-10-19)\n\n### Corre\u00e7\u00f5es\n\n* **build:** assinatura do tarball do atualizador pelo signer com a chave em arquivo ([e31289e](https://github.com/PreloPrinter/prelo/commit/e31289e77cfa285e1892e43161a898fc85ac228c))",
+          "localizedDescription": "## [0.25.2](https://github.com/PreloPrinter/prelo/compare/v0.25.1...v0.25.2) (2026-10-19)\n\n### Correções\n\n* **build:** assinatura do tarball do atualizador pelo signer com a chave em arquivo ([e31289e](https://github.com/PreloPrinter/prelo/commit/e31289e77cfa285e1892e43161a898fc85ac228c))",
           "minOSVersion": "15.0"
         },
         {
@@ -107,7 +115,7 @@
           "date": "2026-10-19",
           "size": 3178064,
           "downloadURL": "https://github.com/PreloPrinter/preloprinter.github.io/releases/download/v0.25.1/Prelo_0.25.1_ios.ipa",
-          "localizedDescription": "## [0.25.1](https://github.com/PreloPrinter/prelo/compare/v0.25.0...v0.25.1) (2026-10-19)\n\n### Corre\u00e7\u00f5es\n\n* **desktop:** o AltServer entra no pacote por ditto depois do build do Tauri (o copiador de recursos n\u00e3o leva um .app inteiro) e o selo externo \u00e9 refeito ([3aad87a](https://github.com/PreloPrinter/prelo/commit/3aad87a3425b0e3eec2c0aa802aa9fe19fd3df78))",
+          "localizedDescription": "## [0.25.1](https://github.com/PreloPrinter/prelo/compare/v0.25.0...v0.25.1) (2026-10-19)\n\n### Correções\n\n* **desktop:** o AltServer entra no pacote por ditto depois do build do Tauri (o copiador de recursos não leva um .app inteiro) e o selo externo é refeito ([3aad87a](https://github.com/PreloPrinter/prelo/commit/3aad87a3425b0e3eec2c0aa802aa9fe19fd3df78))",
           "minOSVersion": "15.0"
         }
       ]
