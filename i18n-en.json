@@ -139,5 +139,18 @@
   "Uma lista só para a casa, no celular e no Mac. Entra por texto, por foto da lousa, por foto do produto, por código de barras ou por “o que vai num bolo de cenoura”. Marque no mercado e imprima por corredor.": "One list for the house, on the phone and on the Mac. Goes in by typing, a photo of the whiteboard, a photo of the product, a barcode or “what goes in a carrot cake”. Tick at the market and print by aisle.",
   "Compras": "Shopping",
   "A lista de compras no bolso": "The shopping list in your pocket",
-  "Digite, fotografe a lousa ou leia o código de barras com a câmera. É a mesma lista do Mac, e sai impressa por corredor do mercado.": "Type, photograph the whiteboard or scan the barcode with the camera. It is the same list as the Mac's, and it prints by market aisle."
+  "Digite, fotografe a lousa ou leia o código de barras com a câmera. É a mesma lista do Mac, e sai impressa por corredor do mercado.": "Type, photograph the whiteboard or scan the barcode with the camera. It is the same list as the Mac's, and it prints by market aisle.",
+  "Lista de compras": "Shopping list",
+  "A lista do mercado, <em>do jeito que ela chega.</em>": "The grocery list, <em>however it arrives.</em>",
+  "Uma lista só para a casa, no celular e no Mac. Escreva, fotografe a lousa, aponte para um produto ou peça por frase; marque no mercado e imprima por corredor.": "One list for the house, on the phone and on the Mac. Type, photograph the whiteboard, point at a product or ask in a sentence; tick at the market and print by aisle.",
+  "Escreva como falar": "Write the way you talk",
+  "“Leite e pão, 2 kg de banana” entra na hora, com quantidade e seção. “Queria fazer um bolo de cenoura” vai para a IA, que propõe os ingredientes e você confirma.": "“Milk and bread, 2 lb bananas” goes in at once, with amount and aisle. “I want to make a carrot cake” goes to the AI, which proposes the ingredients and you confirm.",
+  "Foto da lousa": "Photo of the board",
+  "A lista escrita à mão na cozinha vira itens no app. Você confere o que ela leu antes de entrar.": "The handwritten list in the kitchen becomes items in the app. You check what it read before it goes in.",
+  "Foto do produto": "Photo of a product",
+  "Uma banana vira “Banana”; a embalagem vazia vira marca e tamanho, para comprar de novo igual.": "A banana becomes “Banana”; the empty package becomes brand and size, to buy the same again.",
+  "Código de barras e busca": "Barcode and search",
+  "A câmera do celular lê o código e o produto vem do Open Food Facts, catálogo aberto. Dá para buscar por nome ou marca também.": "The phone's camera reads the code and the product comes from Open Food Facts, the open catalogue. Searching by name or brand works too.",
+  "Por corredor, no papel": "By aisle, on paper",
+  "Hortifruti, padaria, laticínios… na ordem do mercado, com caixinhas e a quantidade ao lado. Os itens de sempre voltam com um toque.": "Produce, bakery, dairy… in the order of the aisles, with boxes and the amount next to each item. The usual items come back with a tap."
 }
