@@ -15,6 +15,14 @@
       "tintColor": "d7281e",
       "versions": [
         {
+          "version": "0.29.0",
+          "date": "2026-10-20",
+          "size": 3250627,
+          "downloadURL": "https://github.com/PreloPrinter/preloprinter.github.io/releases/download/v0.29.0/Prelo_0.29.0_ios.ipa",
+          "localizedDescription": "## [0.29.0](https://github.com/PreloPrinter/prelo/compare/v0.28.6...v0.29.0) (2026-10-20)\n\n### Novidades\n\n* **hubs:** outros hubs da rede aparecem na tela Hubs (o servidor procura _prelo._tcp por Bonjour) com troca num toque; instalação limpa sem dados pessoais nos padrões (cidade, coordenadas, nome, impressora e título neutros), jornal sem clima até ter cidade e saudação sem nome ([73c7c93](https://github.com/PreloPrinter/prelo/commit/73c7c931fe8bc2df25b2ae400b70c823804ac2e5))",
+          "minOSVersion": "15.0"
+        },
+        {
           "version": "0.28.6",
           "date": "2026-10-20",
           "size": 3250410,
