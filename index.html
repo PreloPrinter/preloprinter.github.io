@@ -361,6 +361,10 @@
         <h3>Recados, listas, caderno</h3><p>Um bilhete para quem chega, a lista do mercado com caixinhas, páginas pautadas ou quadriculadas do tamanho que precisar.</p>
       </article>
       <article class="feature glass">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 11-1 9"/><path d="m19 11-4-7"/><path d="M2 11h20"/><path d="m3.5 11 1.6 7.4a2 2 0 0 0 2 1.6h9.8a2 2 0 0 0 2-1.6l1.7-7.4"/><path d="M4.5 15.5h15"/><path d="m5 11 4-7"/><path d="m9 11 1 9"/></svg></div>
+        <h3>Lista de compras com IA</h3><p>Uma lista só para a casa, no celular e no Mac. Entra por texto, por foto da lousa, por foto do produto, por código de barras ou por “o que vai num bolo de cenoura”. Marque no mercado e imprima por corredor.</p>
+      </article>
+      <article class="feature glass">
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2H2v10l9.3 9.3a1 1 0 0 0 1.4 0l8.6-8.6a1 1 0 0 0 0-1.4z"/><circle cx="7" cy="7" r="1.5"/></svg></div>
         <h3>Etiquetas, QR e Wi-Fi</h3><p>Texto grande com a data para o pote do congelador, QR code com legenda, o Wi-Fi de visitas pronto para escanear.</p>
       </article>
@@ -503,6 +507,7 @@ Banana</textarea></label>
       <div role="tablist" aria-label="Telas do app" id="shot-tabs">
         <button type="button" role="tab" data-shot="newsroom" aria-selected="true">Redação</button>
         <button type="button" role="tab" data-shot="reporter">Repórter IA</button>
+        <button type="button" role="tab" data-shot="shopping">Compras</button>
         <button type="button" role="tab" data-shot="note">Peça</button>
         <button type="button" role="tab" data-shot="editor">Editor</button>
         <button type="button" role="tab" data-shot="newspaper">Jornal</button>
@@ -524,6 +529,7 @@ Banana</textarea></label>
           <div class="screen on" data-screen="picker"><img src="img/phone/pt-BR-picker.jpg" alt="Tela de escolha do hub no iPhone" width="1179" height="2556" loading="lazy"></div>
           <div class="screen" data-screen="newsroom"><img src="img/phone/pt-BR-newsroom.jpg" alt="Redação no iPhone" width="1179" height="2556" loading="lazy"></div>
           <div class="screen" data-screen="reporter"><img src="img/phone/pt-BR-reporter.jpg" alt="Repórter IA no iPhone" width="1179" height="2556" loading="lazy"></div>
+          <div class="screen" data-screen="shopping"><img src="img/phone/pt-BR-shopping.jpg" alt="Lista de compras no iPhone" width="1179" height="2556" loading="lazy"></div>
           <div class="screen" data-screen="phone"><img src="img/phone/pt-BR-phone.jpg" alt="Instruções de instalação no iPhone" width="1179" height="2556" loading="lazy"></div>
           <span class="tap" id="phone-tap" aria-hidden="true"></span>
         </div>
@@ -531,6 +537,7 @@ Banana</textarea></label>
           <button type="button" role="tab" data-screen="picker" aria-selected="true">Achar o hub</button>
           <button type="button" role="tab" data-screen="newsroom">Redação</button>
           <button type="button" role="tab" data-screen="reporter">Repórter IA</button>
+          <button type="button" role="tab" data-screen="shopping">Compras</button>
           <button type="button" role="tab" data-screen="phone">Instalar</button>
         </div>
       </div>
@@ -541,6 +548,7 @@ Banana</textarea></label>
         <ul class="reporter-points">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8a6 6 0 0 1 0 8.4M7.8 16.2a6 6 0 0 1 0-8.4M19.1 4.9a10 10 0 0 1 0 14.2M4.9 19.1a10 10 0 0 1 0-14.2"/></svg><div><b>Acha o hub sozinho</b><span>O Mac com a impressora se anuncia na rede; o app lista, você toca e entra. Vários Macs? Escolha um.</span></div></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM18 18h3v3h-3z"/></svg><div><b>Entra com um QR</b><span>Se o hub pede chave, o Mac mostra um QR de pareamento com endereço e chave. A câmera do app lê e pronto.</span></div></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 11-1 9"/><path d="m19 11-4-7"/><path d="M2 11h20"/><path d="m3.5 11 1.6 7.4a2 2 0 0 0 2 1.6h9.8a2 2 0 0 0 2-1.6l1.7-7.4"/><path d="M4.5 15.5h15"/><path d="m5 11 4-7"/><path d="m9 11 1 9"/></svg><div><b>A lista de compras no bolso</b><span>Digite, fotografe a lousa ou leia o código de barras com a câmera. É a mesma lista do Mac, e sai impressa por corredor do mercado.</span></div></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.6L18 9.4l-4.2 1.8L12 16l-1.8-4.8L6 9.4l4.2-1.8z"/></svg><div><b>Tudo que o Mac faz</b><span>Recados, listas, etiquetas, o jornal e a conversa com o repórter, com o Claudinho junto. A aprovação de impressão continua na sua mão.</span></div></li>
         </ul>
         <div class="iphone-steps">
@@ -768,6 +776,7 @@ Banana</textarea></label>
     { id: "newspaper", name: "Jornal", img: "img/newspaper.png", h: 1219, title: "A edição do dia", text: "Diagramada em 576 pontos como um jornal de verdade: cabeçalho gótico, o tempo agora e por hora, a manchete com QR para ler no celular, mercado, almanaque e o que a casa pede. Sai sozinha no horário marcado ou quando você mandar.", items: ["Clima da sua cidade (Open-Meteo)", "Tarefas, agenda e sensores do Home Assistant", "Notícias dos feeds RSS que você escolher", "Seções na ordem que preferir"] },
     { id: "note", name: "Recado", img: "img/note.png", h: 263, title: "Recado", text: "Para quem chega depois de você. Nome de quem recebe, o texto, a assinatura e a hora em que foi impresso.", items: ["Quebra de linha automática", "Data e hora no rodapé", "Também pelo Claude: “deixa um recado para a Chris…”"] },
     { id: "list", name: "Lista", img: "img/list.png", h: 348, title: "Lista", text: "Caixinhas para marcar com caneta. A lista do mercado, as tarefas do fim de semana, o que levar na viagem.", items: ["Um item por linha", "Título opcional", "O Home Assistant pode alimentar a lista do jornal"] },
+    { id: "shopping", name: "Compras", img: "img/shopping.png", h: 1064, title: "Lista de compras", text: "A lista da casa impressa por corredor do mercado: hortifruti, padaria, laticínios… com caixinhas e a quantidade ao lado. Entra por texto, foto da lousa, código de barras ou pela IA.", items: ["Seções na ordem do mercado", "Só o que ainda falta comprar", "Pelo app, pelo celular ou pedindo ao repórter"] },
     { id: "notebook", name: "Caderno", img: "img/notebook.png", h: 583, title: "Caderno", text: "Páginas pautadas, quadriculadas ou pontilhadas, com o número de linhas e o espaçamento que você quiser. Boas para uma nota rápida ou para a criançada desenhar.", items: ["Pautado, quadriculado ou pontilhado", "Espaço estreito, médio ou largo", "Data no topo, se quiser"] },
     { id: "label", name: "Etiqueta", img: "img/label.png", h: 231, title: "Etiqueta", text: "Texto grande para ler de longe, um detalhe e a data de hoje. Pote do congelador, caixa da garagem, prateleira.", items: ["Texto bem grande em condensada", "QR opcional (link ou texto)", "Data de hoje com um clique"] },
     { id: "qr", name: "QR code", img: "img/qr.png", h: 521, title: "QR code", text: "Um link, um texto, um código: com título e legenda. Cole na geladeira, no equipamento, no presente.", items: ["Tamanho ajustado ao papel", "Lido por qualquer câmera de celular"] },
@@ -778,6 +787,7 @@ Banana</textarea></label>
     newspaper: { name: "Newspaper", title: "The day's edition", text: "Laid out in 576 dots like a real newspaper: blackletter masthead, the weather now and by the hour, the headline with a QR to read on the phone, market, almanac and what the house asks for. Comes out by itself at the set time, or whenever you say.", items: ["Weather for your city (Open-Meteo)", "Tasks, calendar and sensors from Home Assistant", "News from the RSS feeds you pick", "Sections in the order you prefer"], h: 1407 },
     note: { name: "Note", title: "Note", text: "For whoever gets home after you. Who it is for, the text, the signature and the time it was printed.", items: ["Line breaks kept", "Title and signature optional", "Also from Claude, by MCP"], h: 263 },
     list: { name: "List", title: "List", text: "Boxes to tick with a pen. The grocery list, the weekend chores, what to pack for the trip.", items: ["One item per line", "Title optional", "Long lists keep going on the roll"], h: 304 },
+    shopping: { name: "Shopping", title: "Shopping list", text: "The house's list printed by market aisle: produce, bakery, dairy… with boxes to tick and the amount next to each item. Goes in by typing, a photo of the whiteboard, a barcode or the AI.", items: ["Sections in the order of the aisles", "Only what is still to buy", "From the app, the phone or by asking the reporter"], h: 1484 },
     notebook: { name: "Notebook", title: "Notebook", text: "Lined, grid or dotted pages, with the number of lines and the spacing you want. Good for a note by hand, a sketch, a shopping tally.", items: ["Today's date on top", "6 to 9 mm spacing", "Up to 80 lines"], h: 919 },
     label: { name: "Label", title: "Label", text: "Big text to read from afar, a detail and today's date. The freezer jar, the garage box, the shelf.", items: ["Optional small QR", "Date on or off", "Fits a jar lid"], h: 213 },
     qr: { name: "QR code", title: "QR code", text: "A link, a text, a code: with a title and a caption. Stick it on the fridge, on the appliance, on the gift.", items: ["Sized to the paper", "Caption below", "Anything a phone camera reads"], h: 521 },
