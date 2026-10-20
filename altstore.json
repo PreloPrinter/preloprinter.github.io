@@ -15,6 +15,14 @@
       "tintColor": "d7281e",
       "versions": [
         {
+          "version": "0.28.6",
+          "date": "2026-10-20",
+          "size": 3250410,
+          "downloadURL": "https://github.com/PreloPrinter/preloprinter.github.io/releases/download/v0.28.6/Prelo_0.28.6_ios.ipa",
+          "localizedDescription": "## [0.28.6](https://github.com/PreloPrinter/prelo/compare/v0.28.5...v0.28.6) (2026-10-20)\n\n### Correções\n\n* **web:** em modo remoto (celular ou outro Mac), os Ajustes dizem de qual hub são e a seção de atualização vira \"Atualização do hub\", com a nota de que o app do aparelho atualiza pela AltStore ([83887db](https://github.com/PreloPrinter/prelo/commit/83887db759365fdff4905bf5ebe5625e44c5db47))\n* **web:** o modal de atualização espera a instalação começar (10 s), mostra \"reabrindo\" enquanto o hub reinicia e \"no ar\" quando volta, recarregando a tela — vale para o Mac e para quem acompanha de outro aparelho ([f1a1adc](https://github.com/PreloPrinter/prelo/commit/f1a1adc297396ca5e79d9bfe0a2d13a1b72f5b3d))",
+          "minOSVersion": "15.0"
+        },
+        {
           "version": "0.28.5",
           "date": "2026-10-20",
           "size": 3249985,
