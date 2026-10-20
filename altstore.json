@@ -15,6 +15,14 @@
       "tintColor": "d7281e",
       "versions": [
         {
+          "version": "0.31.2",
+          "date": "2026-10-20",
+          "size": 3260021,
+          "downloadURL": "https://github.com/PreloPrinter/preloprinter.github.io/releases/download/v0.31.2/Prelo_0.31.2_ios.ipa",
+          "localizedDescription": "## [0.31.2](https://github.com/PreloPrinter/prelo/compare/v0.31.1...v0.31.2) (2026-10-20)\n\n### Correções\n\n* **web:** as bolinhas do fundo aparecem no modo escuro (eram pontos escuros, invisíveis sobre o preto); a folha do código de barras ganha o botão \"Abrir a câmera\" também no app do iPhone e mostra o erro se o leitor falhar ([7d7f99a](https://github.com/PreloPrinter/prelo/commit/7d7f99a5c312b78163973e7891dc6da216bf780d))",
+          "minOSVersion": "15.0"
+        },
+        {
           "version": "0.31.1",
           "date": "2026-10-20",
           "size": 3259868,
