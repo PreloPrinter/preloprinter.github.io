@@ -15,6 +15,14 @@
       "tintColor": "d7281e",
       "versions": [
         {
+          "version": "0.28.5",
+          "date": "2026-10-20",
+          "size": 3249985,
+          "downloadURL": "https://github.com/PreloPrinter/preloprinter.github.io/releases/download/v0.28.5/Prelo_0.28.5_ios.ipa",
+          "localizedDescription": "## [0.28.5](https://github.com/PreloPrinter/prelo/compare/v0.28.4...v0.28.5) (2026-10-20)\n\n### Correções\n\n* **build:** o job de Mac do CI volta a rodar em toda versão e usa os mesmos scripts da build local (Prelo.app com AltServer, .ipa e publicação no site com altstore.json); o passo do .dmg tem limite de 4 min e cai para um .dmg simples se o Finder travar ([75703ed](https://github.com/PreloPrinter/prelo/commit/75703ed3aef7d3b195f4caaf4812efdb724f1e30))",
+          "minOSVersion": "15.0"
+        },
+        {
           "version": "0.28.0",
           "date": "2026-10-19",
           "size": 3246698,
