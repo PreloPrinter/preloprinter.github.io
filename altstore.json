@@ -15,6 +15,14 @@
       "tintColor": "d7281e",
       "versions": [
         {
+          "version": "0.29.2",
+          "date": "2026-10-20",
+          "size": 3250820,
+          "downloadURL": "https://github.com/PreloPrinter/preloprinter.github.io/releases/download/v0.29.2/Prelo_0.29.2_ios.ipa",
+          "localizedDescription": "## [0.29.2](https://github.com/PreloPrinter/prelo/compare/v0.29.1...v0.29.2) (2026-10-20)\n\n### Correções\n\n* **desktop:** o aviso \"Acesso recusado em /api/update\" era o próprio app do Mac — a consulta de atualização do menu ia sem token e, com uma chave de acesso cadastrada, o hub recusava a cada 10 min; agora usa o token interno. O aviso passa a dizer de qual endereço veio a chamada recusada ([e0622dc](https://github.com/PreloPrinter/prelo/commit/e0622dc00523a8ec528a7b186d68eb8d15cedd42))",
+          "minOSVersion": "15.0"
+        },
+        {
           "version": "0.29.1",
           "date": "2026-10-20",
           "size": 3250797,
