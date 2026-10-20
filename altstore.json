@@ -15,6 +15,14 @@
       "tintColor": "d7281e",
       "versions": [
         {
+          "version": "0.31.1",
+          "date": "2026-10-20",
+          "size": 3259868,
+          "downloadURL": "https://github.com/PreloPrinter/preloprinter.github.io/releases/download/v0.31.1/Prelo_0.31.1_ios.ipa",
+          "localizedDescription": "## [0.31.1](https://github.com/PreloPrinter/prelo/compare/v0.31.0...v0.31.1) (2026-10-20)\n\n### Correções\n\n* **shopping:** na lista impressa, a quantidade só aparece quando é diferente de 1 ([5468367](https://github.com/PreloPrinter/prelo/commit/54683670e67542c4e522589bc263c9395c447ca1))\n* **shopping:** o botão \"Ideias com IA\" saiu; a caixa de texto já faz isso quando você escreve um pedido ([ede1e7d](https://github.com/PreloPrinter/prelo/commit/ede1e7dc1cab9d3724f30bd0a65c2eac4e0e9f03))\n* **shopping:** o que você escreve como pedido (\"queria fazer um bolo de cenoura\") vira uma proposta da IA para você conferir e confirmar, não entra direto na lista; a lista impressa mostra a quantidade de todo item (1 quando não foi dita), como na tela ([d6a3002](https://github.com/PreloPrinter/prelo/commit/d6a3002df12c0804f4f07a505c56b302890a3f9e))",
+          "minOSVersion": "15.0"
+        },
+        {
           "version": "0.31.0",
           "date": "2026-10-20",
           "size": 3260047,
