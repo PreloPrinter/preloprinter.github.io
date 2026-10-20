@@ -15,6 +15,14 @@
       "tintColor": "d7281e",
       "versions": [
         {
+          "version": "0.30.0",
+          "date": "2026-10-20",
+          "size": 3259379,
+          "downloadURL": "https://github.com/PreloPrinter/preloprinter.github.io/releases/download/v0.30.0/Prelo_0.30.0_ios.ipa",
+          "localizedDescription": "## [0.30.0](https://github.com/PreloPrinter/prelo/compare/v0.29.2...v0.30.0) (2026-10-20)\n\n### Novidades\n\n* **shopping:** lista de compras da casa — uma lista só no hub (celular, Mac e repórter veem a mesma), itens por texto com quantidade e seção do mercado sem IA, foto da lousa e foto do produto lidas pela IA, código de barras e busca de produtos pelo Open Food Facts, ideias com IA (receita vira ingredientes), itens de sempre, marcação no mercado e impressão por corredor; ferramentas MCP shopping_list/add_shopping_items/check_shopping_items/print_shopping_list; módulo ai.rs compartilhado com o Claudinho; no celular, Compras entra na barra de baixo no lugar do Editor ([6761e5f](https://github.com/PreloPrinter/prelo/commit/6761e5f326dcf473b96325eb451b1ce82b5d6a93))",
+          "minOSVersion": "15.0"
+        },
+        {
           "version": "0.29.2",
           "date": "2026-10-20",
           "size": 3250820,
