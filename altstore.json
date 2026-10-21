@@ -15,6 +15,14 @@
       "tintColor": "d7281e",
       "versions": [
         {
+          "version": "0.33.0",
+          "date": "2026-10-21",
+          "size": 3259674,
+          "downloadURL": "https://github.com/PreloPrinter/preloprinter.github.io/releases/download/v0.33.0/Prelo_0.33.0_ios.ipa",
+          "localizedDescription": "## [0.33.0](https://github.com/PreloPrinter/prelo/compare/v0.32.0...v0.33.0) (2026-10-21)\n\n### Novidades\n\n* **reporter:** o repórter pode usar os servidores MCP que você já cadastrou no Claude Code, como o Home Assistant: em Ajustes do repórter aparece a lista lida do ~/.claude.json e você marca os que ele pode usar; as ferramentas deles entram na conversa junto com as do Prelo ([687033c](https://github.com/PreloPrinter/prelo/commit/687033cce7d6a81e15e824f3bcd0f02341619f10))\n\n### Correções\n\n* **phone:** o botão Mostrar do AltServer saiu (ele não tem janela; a tela agora diz que é o ícone de losango na barra de menus) e a cópia que vem dentro do Prelo é reconhecida como tal; no celular, os campos dos Ajustes não estouram mais a largura da tela (o seletor de hora empurrava a página) e os checkboxes são desenhados como as caixinhas da lista, não o círculo do iOS ([008d61d](https://github.com/PreloPrinter/prelo/commit/008d61d448abb420dbecea034a1de1753799dc63))\n* **web:** nos Ajustes, os campos lado a lado (Título/Leitor, Cidade/Horário) ficam alinhados mesmo quando só um tem dica; no celular a página não rola mais de lado (o checkbox estava herdando largura de campo) ([2ffd51c](https://github.com/PreloPrinter/prelo/commit/2ffd51c60549b0c8f57c5934ba7f05c13bddd68b))\n* **web:** o checkbox desenhado fica quadrado de verdade (sem herdar o espaçamento interno dos campos) ([6082d9b](https://github.com/PreloPrinter/prelo/commit/6082d9b7e5970745c2ffdfc8b587edcc137033f6))",
+          "minOSVersion": "15.0"
+        },
+        {
           "version": "0.32.0",
           "date": "2026-10-20",
           "size": 3260593,
