@@ -15,6 +15,14 @@
       "tintColor": "d7281e",
       "versions": [
         {
+          "version": "0.34.0",
+          "date": "2026-10-22",
+          "size": 3260031,
+          "downloadURL": "https://github.com/PreloPrinter/preloprinter.github.io/releases/download/v0.34.0/Prelo_0.34.0_ios.ipa",
+          "localizedDescription": "## [0.34.0](https://github.com/PreloPrinter/prelo/compare/v0.33.0...v0.34.0) (2026-10-22)\n\n### Novidades\n\n* **web:** em Ajustes → Atualização, \"O que há na versão\" mostra as notas da versão instalada, fechado até você abrir ([24dfd79](https://github.com/PreloPrinter/prelo/commit/24dfd790cc27c1fa803d6cd1e436411a9f149bfb))",
+          "minOSVersion": "15.0"
+        },
+        {
           "version": "0.33.0",
           "date": "2026-10-21",
           "size": 3259674,
